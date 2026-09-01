@@ -96,6 +96,9 @@ if [ ! -d "$VAULT" ]; then
   case "$yn" in [yY]*) [ "$DRY_RUN" -eq 1 ] || mkdir -p "$VAULT" ;; *) die "aborted" ;; esac
 fi
 
+# Normalize: a relative path or one with ".." would get baked into settings.json as-is.
+[ -d "$VAULT" ] && VAULT="$(cd "$VAULT" && pwd -P)"
+
 say ""
 say "${bold}second-brain${off}"
 say "  vault        $VAULT"
