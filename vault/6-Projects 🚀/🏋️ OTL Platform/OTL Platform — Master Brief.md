@@ -839,7 +839,7 @@ programming@crossfit.com."* Send four questions before building anything:
 **Get the licensing answer in writing before building the feature.** One email removes the only real
 legal question in this project.
 
-### Route 1 — recommended: ride a partner platform with an API
+### Route 1 — alternative: ride a partner platform with an API
 **Subscribe to CAP on SugarWOD, pull it into our CRM via SugarWOD's documented API.**
 
 ```
@@ -857,25 +857,67 @@ CrossFit -> SugarWOD (CAP subscription) -> SugarWOD API -> our CRM -> OTL app
   SugarWOD becomes a thin, replaceable pipe holding *only* the programming feed — no members, no
   billing, no results, no app.
 
-**Two things to verify before committing:** that SugarWOD's API exposes the **CAP** track for a CAP
-subscriber — its docs show a `Workouts HQ` group for CrossFit **mainsite** programming, which is not
-the same thing — and current pricing. The recommended route rests on the first.
+**If we ever take this route, two things to verify first:** that SugarWOD's API exposes the **CAP**
+track for a CAP subscriber — its docs show a `Workouts HQ` group for CrossFit **mainsite** programming,
+which is not the same thing — and current pricing. Kept as the candidate if we ever want structured data
+without maintaining a parser.
 
 Setup: create a key at `/gyms/settings/developer-keys` -> `GET /tracks` to find the CAP `track_id` ->
 `GET /workouts?dates=&track_id=` -> map to our model -> programmer reviews -> publish.
 
-### Route 2 — the CAP weekly planning email
-Coaches can subscribe to CAP's weekly planning email. A mailbox we own is the cleanest ingestion point
-involving no third party.
+### Route 2 — CHOSEN as the interim path: the CAP weekly planning email
+Confirmed viable: CAP programming can be sent to a Gmail account. Chosen because it is entirely under
+our control, costs nothing, needs no vendor's goodwill, and the review step is where we wanted a human
+anyway. If an official CrossFit integration ever arrives it swaps in behind the same review-and-publish
+flow.
 
 ```
-CrossFit -> programming@crossfit-otl.com -> parser -> staff review -> published Workout
-             (mailbox we own)               (LLM)
+CrossFit -> Gmail -> forward -> inbound webhook -> parse -> draft -> programmer confirms -> publish
+             (human copy)       (Postmark)                          (Nick/Clay/Javier)
 ```
-Subscribe a dedicated address, not a person's inbox. Inbound via a Resend/Postmark webhook or IMAP
-poll. Parsing is real work — prose written for coaches, so LLM structured extraction plus mandatory
-human review. **Set this up now regardless of which route wins:** free, starts an archive of real CAP
-content to test a parser against, and it's the fallback if a platform route sours.
+
+**Two traps, both verified:**
+- **The Gmail API is out.** `gmail.readonly` is a Google **restricted** scope. In Testing status refresh
+  tokens **expire every 7 days** — the pipeline would break silently, weekly. Production with a
+  restricted scope requires full Google verification including a **third-party CASA security
+  assessment.** Far too much for one email a week.
+- **Cloudflare Email Routing is out.** It works on the **root domain only** and **cannot coexist with
+  another MX**. The root MX points at Microsoft 365, so enabling it would stop staff email dead.
+
+So: Gmail receives it (and stays human-readable), auto-forwards to an inbound webhook. **Postmark
+inbound** gives an address with **zero DNS changes** — no risk to M365. Check whether the existing
+Resend account now offers inbound too. Later, a tidy `cap@in.crossfit-otl.com` via a **subdomain** MX;
+those providers support subdomains, unlike Cloudflare Email Routing.
+
+**Full design — data model, states, review-screen spec, build order — in the vault at
+`Build/CAP Email Ingestion — Pipeline Design.md`.** Summary of the load-bearing parts:
+
+- **Idempotency:** inbound `provider_message_id` is UNIQUE. Webhooks retry; a redelivery must never
+  produce a duplicate week of workouts.
+- **`workout_date` is a DATE in gym-local time**, never a UTC timestamp. A WOD belongs to a day, not an
+  instant, and timestamps produce off-by-one days across timezones.
+- **Keep `body_raw` verbatim** on every draft, so a bad parse can be re-run months later.
+- **Date anchoring:** the email may name days rather than dates. Anchor to an explicit `week_of` and make
+  the reviewer confirm the mapping, or a parser slip puts Thursday's workout on Wednesday's board.
+- **ScoringType must be explicitly confirmed, never auto-accepted.** It decides how members log and how
+  leaderboards sort; wrong values corrupt results retroactively and poison PR detection. The parser's
+  guess is a suggestion with a confidence score, and publish is blocked until a human clicks it. This is
+  the "double-check the logging" step.
+- **Confirm and Publish are separate actions**, both audit-logged with the user id.
+- **Member-visible vs staff-only:** workout and scaling to members; whiteboard brief, stimulus notes,
+  coaching notes, logistics and coach videos stay staff-only. Keeps coaching material out of members'
+  way and CAP exposure comfortably inside the licence.
+- **CAP must never be publicly reachable** — behind member auth, no public URLs, no unauthenticated API.
+- **Alert when nothing is published for tomorrow.** A missed parse is recoverable; a missed parse nobody
+  noticed is a class staring at a blank screen.
+- **Ingest before you parse.** Storing, deduping and archiving emails is a day's work and immediately
+  useful; the parser can start terrible because the review step catches it.
+
+> [!danger] 🔴 Verify before writing the parser: what is actually in the email?
+> The design assumes the weekly email carries the programming itself. It might be a summary with links
+> back to the Toolkit, or a PDF attachment — different parsers, and the link-only case means email alone
+> is not enough. **Subscribe a mailbox this week and read Friday's email first.** It costs nothing and
+> it is the one thing that could invalidate this design.
 
 ### Route 3 — the Affiliate Toolkit directly
 The primary CAP surface, accessed with our own credentials, containing everything. But it's a web app
@@ -1005,8 +1047,9 @@ members to an off-the-shelf tool instead of building sequences, templates and de
 - [ ] Mirror the iPhone; walk the OTL app screen by screen against the feature spec
 - [ ] Point mitmproxy at the app and capture its JSON responses for results, benchmarks, profile photos
 - [ ] **Email `programming@crossfit.com`** — the four CAP access/licensing questions in §D route 0
-- [ ] Subscribe a dedicated mailbox to the **CAP weekly planning email** — free, start the archive
-- [ ] Trial SugarWOD + CAP, mint a developer key, **verify `GET /tracks` exposes the CAP track**
+- [ ] **Subscribe a dedicated Gmail to the CAP weekly planning email** — free, do it this week
+- [ ] **Read Friday's email**: full programming, links, or attachment? The CAP plan depends on the answer
+- [ ] Stand up Postmark inbound + Gmail auto-forward; store raw emails before writing any parser
 - [ ] Confirm Toolkit access: affiliate fees current, trainer credential current, Agreement signed
 - [ ] Confirm CAP is on in Train, and the **Core ↔ Train member sync** toggle is enabled
 - [ ] Confirm the Instagram account is **Business or Creator**, linked to a Facebook Page
@@ -1035,8 +1078,9 @@ members to an off-the-shelf tool instead of building sequences, templates and de
 4. **What is the actual driver — cost, missing features, control, or frustration?** If cost, compare
    honestly against 12–24 months of build time.
 5. **Who maintains it at 6am when billing fails and you're coaching a class?**
-6. **Does SugarWOD's API expose the CAP track, or only CrossFit mainsite?** The recommended CAP route
-   rests on this. And does our own app count as "another platform" for sharing CAP under CrossFit's terms?
+6. **Does the CAP weekly planning email contain the programming, or just links to the Toolkit?** The
+   whole CAP pipeline depends on the answer. And does our own app count as "another platform" for sharing
+   CAP under CrossFit's terms?
 7. **Rebuild marketing automation, or sync to an off-the-shelf tool?**
 8. **Do comments, reactions and social posts migrate, get archived, or start fresh?**
 
@@ -1143,6 +1187,7 @@ vault/6-Projects 🚀/🏋️ OTL Platform/
     ├── Staff Mode & POS — Roles, Terminal, Refunds.md
     ├── CAP Programming — Independent Ingestion.md
     ├── CAP — Official Facts & Platform List.md
+    ├── CAP Email Ingestion — Pipeline Design.md
     ├── Infrastructure — Domain, DNS & Email.md
     └── Scope & Phasing — Honest Estimate.md
 ```

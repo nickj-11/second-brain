@@ -21,7 +21,17 @@ tags:
 
 ---
 
-## 🥇 Recommended route: ride a partner platform with an API
+> [!success] 🟢 Decision, 2026-09-19: route 2 (the CAP email) is the interim path
+> Confirmed viable — CAP programming can be sent to a Gmail account. We pull from there, parse, place on
+> the right dates, and a `programmer` (Nick, Clay, Javier) confirms the logging and publishes to the
+> member app. Full design in [[CAP Email Ingestion — Pipeline Design]].
+>
+> Route 1 below stays the candidate if we ever want structured data without writing a parser, and route
+> 0 runs in parallel regardless — the answer may bless or replace all of this.
+
+---
+
+## 🥇 Alternative: ride a partner platform with an API
 
 **Subscribe to CAP on SugarWOD, then pull it into our CRM through SugarWOD's documented API.**
 
@@ -60,25 +70,29 @@ Why this wins:
 
 ---
 
-## 🥈 Route 2: the CAP weekly planning email
+## 🥈 Route 2 — CHOSEN: the CAP weekly planning email
 
-CrossFit's sharing guidance states coaches **can subscribe to CAP's weekly planning email.** An email
-landing in a mailbox we control is the cleanest ingestion point that involves no third party at all.
+CrossFit's sharing guidance states coaches **can subscribe to CAP's weekly planning email.** A mailbox
+we control is the cleanest ingestion point involving no third party.
 
 ```
-CrossFit → programming@crossfit-otl.com → parser → staff review → published Workout
-            (mailbox we own)               (LLM)
+CrossFit -> Gmail -> forward -> inbound webhook -> parse -> draft -> programmer confirms -> publish
 ```
 
-- Subscribe a dedicated address, not a person's inbox
-- Inbound handling: a Resend/Postmark inbound webhook, or IMAP poll
-- **Parsing is real work here** — the email is prose written for coaches, so this needs LLM structured
-  extraction against our schema, and mandatory human review
-- No credentials to borrow, no scraping, no platform in the middle
+Chosen because it is entirely under our control, costs nothing, needs no vendor's goodwill, and the
+review step is where we wanted a human anyway.
 
-> [!tip] 🟣 Worth setting up now regardless of which route wins
-> It costs nothing, it starts building an archive of real CAP content we can test a parser against, and
-> it's the fallback if a platform route sours. Subscribe this week.
+**Two traps worth knowing, both verified:** the **Gmail API is out** — `gmail.readonly` is a restricted
+scope, refresh tokens expire every 7 days in Testing status and production needs a CASA security
+assessment. And **Cloudflare Email Routing is out** — root-domain only, cannot coexist with the
+Microsoft 365 MX, so it would break staff email. Use Gmail auto-forward to an inbound webhook instead.
+
+**Full design, data model, review-screen spec and build order:
+[[CAP Email Ingestion — Pipeline Design]].**
+
+> [!danger] 🔴 One thing to verify before building the parser
+> We don't yet know whether the weekly email carries the **programming itself** or just links back to
+> the Toolkit. Subscribe now, read Friday's email, then write the parser.
 
 ---
 
@@ -148,8 +162,9 @@ mapping rather than language parsing. That is the strongest argument for route 1
 
 ## 🛠️ Next actions
 
-- [ ] **Email `programming@crossfit.com`** with the four questions above (route 0) — do this first
-- [ ] Subscribe a dedicated mailbox to the **CAP weekly planning email** (route 2) — free, start the archive
+- [ ] **Subscribe a dedicated Gmail to the CAP weekly planning email** — this week, free
+- [ ] **Read Friday's email**: full programming, links, or an attachment? Everything else depends on it
+- [ ] **Email `programming@crossfit.com`** with the four questions above (route 0) — in parallel
 - [ ] Trial SugarWOD, add CAP, mint a developer key, and **verify `GET /tracks` exposes the CAP track**
 - [ ] Confirm current SugarWOD CAP pricing
 - [ ] Confirm Toolkit access is healthy: fees current, trainer credential current, Agreement signed
@@ -160,6 +175,7 @@ mapping rather than language parsing. That is the strongest argument for route 1
 
 ## 🔗 Related
 
+- [[CAP Email Ingestion — Pipeline Design]] — the chosen route, built out in full
 - [[CAP — Official Facts & Platform List]] — the primary-source facts this plan rests on
 - [[Build MOC]] — parent
 - [[SugarWOD API — Industry Comparison]] — the API behind route 1
