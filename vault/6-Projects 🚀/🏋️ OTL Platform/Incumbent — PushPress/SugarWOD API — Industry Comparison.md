@@ -64,7 +64,7 @@ vocabulary to model our own schema against.
 
 ## 🔗 Related
 
-- [[🏋️ Gym App — PushPress MOC]] — parent
+- [[Incumbent — PushPress MOC]] — parent
 - [[PushPress Platform API — Endpoint Inventory]] — our platform's surface, for contrast
 - [[CrossFit Affiliate Programming → Train Sync]] — the CAP partner network
 - [[Workout & PR Data — Access Options]] — the decision this feeds

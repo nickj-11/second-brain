@@ -80,6 +80,6 @@ track: Mayhem, HWPO, PRVN, Invictus, Brute, Misfit, Bolder.
 
 ## 🔗 Related
 
-- [[🏋️ Gym App — PushPress MOC]] — parent
+- [[Incumbent — PushPress MOC]] — parent
 - [[Workout & PR Data — Access Options]] — the actual hard part
 - [[SugarWOD API — Industry Comparison]] — another CAP partner, same results wall

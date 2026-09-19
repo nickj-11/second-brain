@@ -93,6 +93,6 @@ Keys support an `expiresAt` timestamp, so build rotation in from day one rather 
 
 ## 🔗 Related
 
-- [[🏋️ Gym App — PushPress MOC]] — parent
+- [[Incumbent — PushPress MOC]] — parent
 - [[PushPress Platform API — Endpoint Inventory]] — what the key actually unlocks
 - [[Workout & PR Data — Access Options]] — the part the API does *not* cover

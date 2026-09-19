@@ -97,6 +97,6 @@ benchmark, rep max, or PR. Train's performance data is not part of the public v3
 
 ## 🔗 Related
 
-- [[🏋️ Gym App — PushPress MOC]] — parent
+- [[Incumbent — PushPress MOC]] — parent
 - [[PushPress API — Keys & Auth]] — how to authenticate against all of the above
 - [[Workout & PR Data — Access Options]] — closing the gap

@@ -78,7 +78,7 @@ an unsanctioned path. Not worth it when option 1 is an email.
 
 ## 🔗 Related
 
-- [[🏋️ Gym App — PushPress MOC]] — parent
+- [[Incumbent — PushPress MOC]] — parent
 - [[PushPress API — Keys & Auth]] — minting the key
 - [[PushPress Platform API — Endpoint Inventory]] — the full surface, and the gap
 - [[CrossFit Affiliate Programming → Train Sync]] — programming side, already solved
