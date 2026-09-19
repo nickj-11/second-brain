@@ -45,14 +45,14 @@ tags:
 
 ---
 
-# Part I — Conversation transcript (verbatim, unedited)
+## 💬 Part I — Conversation transcript (verbatim, unedited)
 
 > [!info] 🟦 Reproduced exactly as sent
 > Transcribed speech, so spelling and punctuation are as dictated — including `Paul` for `pull`,
 > `hotel` for `OTL`, `Jim` for `gym`, `abs` for `apps`, and `I flee to us` for `MyFleetOS`. Left
 > untouched deliberately: this is the source record.
 
-## Message 1 — 2026-09-19
+### Message 1 — 2026-09-19
 
 ```
 it figured out. So we're trying to build our um, gym software app, and basically we use a software
@@ -63,14 +63,14 @@ all of the workouts are automatically synced and then we can use the the push pr
 all of our members' uh, workout scores and PRs and all of the above.
 ```
 
-## Message 2 — 2026-09-19
+### Message 2 — 2026-09-19
 
 ```
 No, the API key would have to be pulled or done somehow by the train app and the train app get Paul
 workouts from Crossfit affiliate programming
 ```
 
-## Message 3 — 2026-09-19
+### Message 3 — 2026-09-19
 
 ```
 I also need to build an app that's connected to the CRM that we are going to build to replace push
@@ -126,7 +126,7 @@ text etc. so that when we move them over they don't just get hammered with a bun
 anything like that so we need to make sure that that's a smooth process
 ```
 
-## Message 4 — 2026-09-19
+### Message 4 — 2026-09-19
 
 ```
 Thecrossfit Dash otl.com domain is hosted on Go Daddy. My Mac mini already has access to that
@@ -188,7 +188,7 @@ So how would I get cap programming sent over to our CRM that we are going to bui
 separate than push press because we are ditching everything push press in building our own
 ```
 
-## Message 5 — 2026-09-19
+### Message 5 — 2026-09-19
 
 ```
 Save EVERYTTING as long detailed pdf that includes un edited texts of what I have sent in chat and
@@ -202,7 +202,7 @@ Can you read and write into my Nicks Vault in obsidian?  If so you can just save
 
 ---
 
-# Part II — What was researched and found
+## 🔍 Part II — What was researched and found
 
 > [!info] 🟦 Method note
 > Where marketing pages and docs sites disagreed with implementation, implementation won. The
@@ -212,12 +212,12 @@ Can you read and write into my Nicks Vault in obsidian?  If so you can just save
 
 ---
 
-## 1. PushPress Platform API — what exists and what doesn't
+### 1. PushPress Platform API — what exists and what doesn't
 
 **Verified against `@pushpress/pushpress` v1.15.0 (npm, published 2026-04-15)** by downloading the
 package and reading `src/funcs/`, `src/lib/config.ts`, `src/lib/security.ts` and `src/models/`.
 
-### Connection
+#### Connection
 | Item | Value |
 |---|---|
 | Production base URL | `https://api.pushpress.com/v3` |
@@ -230,7 +230,7 @@ package and reading `src/funcs/`, `src/lib/config.ts`, `src/lib/security.ts` and
 | Date filters | Check-in endpoints accept `after` / `before` |
 | SDKs | `@pushpress/pushpress` (TS, 47 versions) · `pushpress/php-sdk` |
 
-### Where the key comes from
+#### Where the key comes from
 **Core → Settings → Security & Access → Add API Key** (admin required). Self-serve. There is nothing
 to request from PushPress and no pre-existing key hidden in the account.
 
@@ -239,11 +239,11 @@ Three distinct keys exist and are **not interchangeable**:
 2. **Grow API key** — Grow CRM only (marketing side). Separate product, separate key.
 3. **Developer portal key** — `developer.pushpress.com`, login-walled; same API, also mintable via `/keys`.
 
-### Key management endpoints
+#### Key management endpoints
 `POST /keys` (accepts `name`, `description`, `expiresAt`) · `GET /keys` · `GET /keys/{id}` ·
 `POST /keys/{id}/revoke` · `DELETE /keys/{id}`
 
-### Complete endpoint inventory — 40 paths
+#### Complete endpoint inventory — 40 paths
 **Customers:** `/customers` (GET, POST) · `/customers/{uuid}` · `/attributions/attributions` ·
 `/attributions/attributions/{uuid}`
 
@@ -263,7 +263,7 @@ Three distinct keys exist and are **not interchangeable**:
 **Keys & webhooks:** `/keys` · `/keys/{id}` · `/keys/{id}/revoke` · `/webhooks` · `/webhooks/{uuid}` ·
 `/webhooks/{uuid}/activate` · `/webhooks/{uuid}/deactivate` · `/webhooks/{uuid}/rotate-signing-secret`
 
-### Webhook events — all 23
+#### Webhook events — all 23
 `app.installed` · `app.uninstalled` · `appointment.canceled` · `appointment.noshowed` ·
 `appointment.rescheduled` · `appointment.scheduled` · `checkin.created` · `checkin.deleted` ·
 `checkin.failed` · `checkin.updated` · `class.canceled` · `customer.created` · `customer.deleted` ·
@@ -271,7 +271,7 @@ Three distinct keys exist and are **not interchangeable**:
 `enrollment.status.changed` · `memberapp.updated` · `reservation.canceled` · `reservation.created` ·
 `reservation.noshowed` · `reservation.waitlisted`
 
-### 🔴 The finding that shapes everything
+#### 🔴 The finding that shapes everything
 **Zero endpoints, zero data models and zero webhook events reference workout, result, score,
 benchmark, rep max or PR.** A case-insensitive grep across the entire SDK source returns nothing.
 Also absent: products, orders, invoices, transactions — so POS data has no API either.
@@ -280,7 +280,7 @@ The API covers the **business**. It does not cover **performance**.
 
 ---
 
-## 2. The CAP → Train credential — whose it is
+### 2. The CAP → Train credential — whose it is
 
 **The initial assessment that the sync uses "no API key" was wrong, and was corrected.** There *is* a
 credential. It belongs to **PushPress the company**, held server-side under a business arrangement
@@ -295,7 +295,7 @@ Full list in §10.
 So "create our own key" would mean becoming a CAP distribution partner: a business conversation with
 CrossFit, not a credential to mint.
 
-### What CAP actually includes
+#### What CAP actually includes
 - **Included with affiliation** — "No extra subscription. No extra cost. Just access."
 - Requires a CrossFit affiliate in good standing; the Train-delivered version also needs a Train subscription
 - Released **every Friday, two weeks in advance**; platforms sync **nightly**
@@ -307,7 +307,7 @@ CrossFit, not a credential to mint.
 
 ---
 
-## 3. SugarWOD — the control case
+### 3. SugarWOD — the control case
 
 Checked because if another CAP partner exposed results, switching platforms would solve the gap.
 **It doesn't.**
@@ -338,9 +338,9 @@ our own schema.*
 
 ---
 
-## 4. Stripe — the best news in the project
+### 4. Stripe — the best news in the project
 
-### Account ownership
+#### Account ownership
 PushPress's own help documentation: **the Stripe account is "typically under the gym owner's email
 from when PushPress was set up."** Setup path is Core → Settings → Billing & Payment → "Connect with
 Stripe" → Stripe onboarding, approval typically instant. Gym owners get **direct Stripe Dashboard
@@ -351,7 +351,7 @@ account is managed in Stripe directly."
 account. The new CRM authenticates to the same account with your own keys. Every `cus_...` and
 `pm_...` stays put. Nobody re-enters anything.
 
-### The real risk is schedules, not cards
+#### The real risk is schedules, not cards
 Open the Subscriptions tab in the Stripe Dashboard:
 - **Live `sub_` objects exist** → billing schedules live in Stripe and largely survive. Rebuild the UI, not the billing.
 - **Only one-off PaymentIntents** → PushPress runs its own recurring biller. More likely, given their
@@ -362,7 +362,7 @@ Open the Subscriptions tab in the Stripe Dashboard:
 This is the single highest-risk item in the project. Wrong one way, revenue stops. Wrong the other,
 members get double-charged.
 
-### Fallback if the account turns out platform-owned
+#### Fallback if the account turns out platform-owned
 Stripe's **self-serve PAN copy**, available in the Dashboard:
 - Copies **Customers, Cards, Sources, Payment Methods and Bank Accounts**
 - **Preserves original Customer IDs** — foreign keys survive
@@ -376,7 +376,7 @@ Stripe also documents PAN **import** from another processor and PAN **export** t
 migration they require the request to include **both customer records and the associated payment
 data**.
 
-### ACH / bank debits — the one conditional part
+#### ACH / bank debits — the one conditional part
 Cards copy freely; bank accounts don't, quite. **Same Stripe account: mandates are untouched, no issue
 at all.** Moving to a *different* Stripe account, Stripe gates it:
 
@@ -399,7 +399,7 @@ account carrying `mandate_data[customer_acceptance][type]=offline` with `accepte
 reviewing how you collect authorization. Which confirms the principle: Stripe honours an existing
 authorization when you can evidence its date.)*
 
-### Hard rules
+#### Hard rules
 - **Never let a PAN or bank number touch our servers** — not in a database, log, scraped blob, or
   "temporarily." Storing one puts us in **PCI-DSS scope**, an audited compliance programme. New cards
   come in via Stripe Elements (web) / PaymentSheet (mobile); the backend only ever sees `pm_` and `cus_`.
@@ -420,7 +420,7 @@ re-authorisation, no interruption. The app changes; the payment doesn't.
 
 ---
 
-## 5. Apple App Store — quoted verbatim
+### 5. Apple App Store — quoted verbatim
 
 Retrieved from `developer.apple.com/app-store/review/guidelines/`.
 
@@ -449,7 +449,7 @@ and require IAP; in-person classes do not.
 
 ---
 
-## 6. Instagram — half the feature is achievable
+### 6. Instagram — half the feature is achievable
 
 - **Instagram Basic Display API was permanently shut down on 4 December 2024.** All requests to its
   endpoints now error. Anything built against it is dead.
@@ -465,7 +465,7 @@ members until Meta approves.
 
 ---
 
-## 7. `crossfit-otl.com` — live DNS audit, 2026-09-19
+### 7. `crossfit-otl.com` — live DNS audit, 2026-09-19
 
 Queried over DNS-over-HTTPS against Cloudflare's resolver.
 
@@ -478,18 +478,18 @@ Queried over DNS-over-HTTPS against Cloudflare's resolver.
 | `TXT selector1._domainkey` | *absent* | **No DKIM** (M365 default selector) |
 | `CNAME www` | `e106509a8f5ab8ba.vercel-dns-017.com` | Website already on **Vercel** |
 
-### 🔴 Why this matters immediately
+#### 🔴 Why this matters immediately
 1. Staff email is **already** sending unauthenticated — weaker deliverability, and **anyone can spoof
    `@crossfit-otl.com` today.** This is a live exposure, independent of the CRM project.
 2. If the CRM starts sending from this domain as-is, **it lands in spam.** Gmail and Yahoo have
    required authentication from bulk senders since early 2024.
 
-### 🟢 Two things already align with the plan
+#### 🟢 Two things already align with the plan
 The website is on Vercel and the domain is in hand at GoDaddy. Nothing to migrate there.
 
 ---
 
-## 8. PushPress export & reporting routes — better than expected
+### 8. PushPress export & reporting routes — better than expected
 
 The v3 API has no products or sales endpoints, **but Core's reporting does**, as CSV and Excel:
 
@@ -510,7 +510,7 @@ results export is not exposed.
 
 ---
 
-## 9. Stripe Terminal / Tap to Pay on iPhone — POS requirements
+### 9. Stripe Terminal / Tap to Pay on iPhone — POS requirements
 
 For the staff POS, verified from Stripe's Terminal documentation:
 
@@ -530,7 +530,7 @@ Stripe account — so this is a like-for-like replacement, not a new capability 
 
 ---
 
-## 10. CAP — primary source, from CrossFit's own support knowledge base
+### 10. CAP — primary source, from CrossFit's own support knowledge base
 
 Retrieved 2026-09-19 from `crossfit.my.site.com/Support`. **Supersedes every third-party and
 marketing-page claim about CAP, including earlier claims in this document.** Five articles in the
@@ -538,13 +538,13 @@ CrossFit Affiliate Programming topic: `How-to-Access-CAP-Toolkit-Platforms` (las
 2026-07-06), `What-CrossFit-Affiliate-Programming-CAP-Includes`, `How-to-Use-and-Share-CAP`,
 `CAP-FAQs-and-Troubleshooting`, `Cardio-conversion-Charts`.
 
-### The contact that matters
+#### The contact that matters
 **`programming@crossfit.com`.** All four substantive articles point here, and the access article says
 verbatim: *"Need help with access or integration? Email programming@crossfit.com."* That is an explicit
 invitation to ask about integration — not a generic support queue. It supersedes
 `affiliatesupport@crossfit.com`, suggested earlier from a search result.
 
-### Access
+#### Access
 **Via the Affiliate Toolkit (primary route):** CAP is included with affiliation, no charge from
 CrossFit. Affiliate must be **in good standing**. Coaches can access directly "with valid credentials
 and Affiliate Toolkit access." Staff are added by Toolkit invitation.
@@ -555,7 +555,7 @@ and Affiliate Toolkit access." Staff are added by Toolkit invitation.
 **Via third-party platforms:** "Setup guides and pricing vary on each platform; please reach out to the
 third-party platform directly." CrossFit charges nothing, but **platform rates vary.**
 
-### Release schedule
+#### Release schedule
 **Every Friday, two weeks in advance.** Programming Calendar available at least two weeks ahead.
 Platforms sync **nightly** ("Workout deleted in platform? Wait for the nightly sync or re-download").
 English only; other languages in development.
@@ -563,7 +563,7 @@ English only; other languages in development.
 *This is more runway than previously recorded — "by Friday at the latest" came from PushPress's page. A
 parse-and-review pipeline has a fortnight of slack, not a weekend.*
 
-### What CAP includes
+#### What CAP includes
 Daily programming, seven days/week · lesson plans (warm-ups, whiteboard briefs, scaling, logistics,
 cool-downs, coaching resources) · stimulus and coaching notes · daily videos · supplemental "Work Your
 Weakness" (three strength options, skill work, stamina session) · monthly focus areas · imperial/metric
@@ -574,7 +574,7 @@ toggle · cardio conversion charts.
 **CAP vs CrossFit.com:** CrossFit.com is general public with minimal instruction; CAP is affiliates only
 with full lesson plans, scaling and coaching tools.
 
-### Sharing — what CrossFit explicitly permits
+#### Sharing — what CrossFit explicitly permits
 For coaches and staff: add staff to the Toolkit by invitation · **coaches can subscribe to CAP's weekly
 planning email** · save CAP to the mobile home screen.
 
@@ -585,7 +585,7 @@ programming with members."*
 app qualifies is a reasonable reading, not a documented one. Get it in writing from
 `programming@crossfit.com` before building the feature.
 
-### The official platform list — all 15
+#### The official platform list — all 15
 | Platform | How to get CAP | Support |
 |---|---|---|
 | Boxmate | Sign up (trial) | `info@boxmateapp.co.uk`; has a CAP-download guide |
@@ -613,11 +613,11 @@ corrected plan in §D.
 
 ---
 
-# Part III — The plan
+## 🧭 Part III — The plan
 
-## A. Migration
+### A. Migration
 
-### Data inventory and route for every dataset
+#### Data inventory and route for every dataset
 
 | Data | Route | Notes |
 |---|---|---|
@@ -641,7 +641,7 @@ corrected plan in §D.
 | **Results, benchmarks, PRs** | 🔴 **No supported export** | Leaderboard export + app scrape |
 | Comments, reactions, posts | No export | Decide: migrate, archive, or start fresh |
 
-### 🔴 Do this before giving PushPress any notice
+#### 🔴 Do this before giving PushPress any notice
 Access dies with the account, and results have no supported path out. Order of attack:
 1. **Ask PushPress in writing** what export departing customers get. They run a migration team for
    inbound data — ask what's available outbound. Get it documented.
@@ -649,7 +649,7 @@ Access dies with the account, and results have no supported path out. Order of a
    type. If structured, it may suffice alone.
 3. **Capture the app's own API responses** — last resort, best form of it.
 
-### On scraping — do it well or not at all
+#### On scraping — do it well or not at all
 It's our gym's data and extracting it is legitimate. Two practical cautions:
 - **Check PushPress's terms on automated access** before running at scale. A supported export waited a
   week for beats a scraper maintained forever.
@@ -664,7 +664,7 @@ profile for Core; mitmproxy against the mirrored iPhone for Train and member-app
 > Chat history persists. Point automation at an already-authenticated browser profile and pass API keys
 > as environment variables. Driving a logged-in session never requires seeing a password.
 
-### Reconciliation — definition of done
+#### Reconciliation — definition of done
 Not "the script ran."
 - Member count in extract == member count in Core UI
 - Active enrollments == active members in Core billing
@@ -672,7 +672,7 @@ Not "the script ran."
 - Ten members spot-checked by hand across every field
 - Every extract archived off the working machine, encrypted
 
-### Comms safety — migrating without spamming everyone
+#### Comms safety — migrating without spamming everyone
 **Rule: import suppressed, verify, then enable.**
 1. **A global send kill switch**, not per-contact flags. One system-level flag blocking all email, SMS
    and push. Off by default. Per-contact flags get missed on one code path and that's enough.
@@ -691,7 +691,7 @@ Not "the script ran."
 8. **One deliberate announcement**, from you, before cutover. What's changing, what they need to do
    (ideally nothing), what their statement will say, and that their PR history came with them.
 
-### Phased cutover
+#### Phased cutover
 | Phase | What moves | Risk | Reversible |
 |---|---|---|---|
 | **0. Extract** | Nothing. Pull and verify. | None | n/a |
@@ -715,9 +715,9 @@ cycle of runway. Avoid the week of the Open and holidays.
 
 ---
 
-## B. Architecture
+### B. Architecture
 
-### Stack
+#### Stack
 | Layer | Choice | Why |
 |---|---|---|
 | Database | **Supabase** (Postgres) | Relational fits; adds auth, RLS, storage, realtime |
@@ -732,7 +732,7 @@ cycle of runway. Avoid the week of the Open and holidays.
 | Machine email | **Resend** | On a `notify.` subdomain |
 | GIFs | Giphy or Tenor API | Workout comments |
 
-### Domain model
+#### Domain model
 ```
 Member ──< Enrollment >── Plan
    │
@@ -758,7 +758,7 @@ Decisions worth making now, because they're expensive later:
   ahead, and re-running an import without them creates duplicates.
 - **`migrated_at` / `migration_source` on every imported row.**
 
-### Billing engine
+#### Billing engine
 **Prefer Stripe Subscriptions over a home-grown scheduler.** Stripe handles retries, dunning,
 proration, SCA and failed-payment recovery — all of which get rebuilt badly otherwise. The CRM stores
 membership *policy*; Stripe executes *billing*. Custom concepts (holds, comps, family plans, class
@@ -767,7 +767,7 @@ packs) map **onto** a Stripe subscription rather than replacing its scheduler.
 Handle webhooks idempotently: `invoice.payment_failed`, `invoice.paid`,
 `customer.subscription.updated`, `payment_method.attached`. Idempotency keys on everything outbound.
 
-### Security baseline
+#### Security baseline
 Non-negotiable for a system holding member PII, possibly minors' data, emergency contacts and payment
 tokens: no PANs ever · secrets in the platform secret store, separate keys per environment · audit log
 on every staff action touching member data or billing · encrypted, **restore-tested** backups · MFA on
@@ -780,13 +780,13 @@ every staff account · export and deletion paths built early for privacy request
 
 ---
 
-## C. One app, role-gated — staff mode and POS
+### C. One app, role-gated — staff mode and POS
 
 PushPress splits member and staff into two apps. **Collapsing both into one CrossFit OTL app with
 staff features gated by role is the right call:** one codebase, one auth system, one release cycle, one
 App Store listing, and staff stop carrying two apps. Accounts are already shared, so nothing is lost.
 
-### Roles — per-capability, not a boolean
+#### Roles — per-capability, not a boolean
 | Role | Can do |
 |---|---|
 | `member` | Own profile, schedule, workouts, social |
@@ -803,7 +803,7 @@ an audit entry: who, what, when, which member, how much.
 > described functionality" is a routine rejection. **Include a staff demo account in App Review notes
 > on every submission.** Consider a demo-mode flag exposing staff UI against seeded data.
 
-### POS — three payment paths, all on the existing OTL Stripe account
+#### POS — three payment paths, all on the existing OTL Stripe account
 1. **Card present — Tap to Pay on iPhone.** Stripe Terminal React Native SDK. Requirements and Apple
    entitlement lead time in §9 above. Replaces the reader/Tap to Pay already used via PushPress.
 2. **Card on file** — the most-used path in a gym. Search a member by name, charge the saved card or
@@ -813,7 +813,7 @@ an audit entry: who, what, when, which member, how much.
 3. **Manual entry** — fallback for a member with no saved method. Elements / PaymentSheet. Never a raw
    PAN in our UI.
 
-### Refund approval workflow
+#### Refund approval workflow
 ```
 staff initiates → refund REQUEST (pending) → pos_admin reviews → Stripe refund → audit log
                                            ↘ declined, with reason
@@ -829,13 +829,13 @@ staff initiates → refund REQUEST (pending) → pos_admin reviews → Stripe re
 > An admin refunding directly, bypassing the request record, is how audit trails develop holes. Let
 > admins approve their own requests instantly if you like — the record still gets written.
 
-### Products and inventory
+#### Products and inventory
 Model: `Product` (name, category, price, taxable, active) · `InventoryItem` (stock, reorder point) ·
 `Sale` → `SaleLineItem` · `Payment` → Stripe charge · `Refund` → Stripe refund + approval record.
 Everything currently in PushPress: Element drinks and electrolyte packets, body scans, drop-ins, merch,
 services. Extraction route in §8. Cross-check totals against Stripe.
 
-### Editing workouts from the app
+#### Editing workouts from the app
 The pain point named: changing a workout today needs a computer and a Train login. In the new system a
 `programmer` edits from the app or the CRM.
 
@@ -849,7 +849,7 @@ The pain point named: changing a workout today needs a computer and a Train logi
 
 ---
 
-## D. CAP programming into a fully independent CRM
+### D. CAP programming into a fully independent CRM
 
 > [!danger] 🔴 Rewritten — the earlier plan was built on a wrong fact
 > The previous version ran this pipeline from a **Google Docs** delivery. Google Docs is not one of
@@ -859,7 +859,7 @@ The pain point named: changing a workout today needs a computer and a Train logi
 leaving costs nothing. And programming lands **every Friday, two weeks ahead**, so a parse-and-review
 pipeline has a fortnight of slack.
 
-### Route 0 — just ask. Do this first.
+#### Route 0 — just ask. Do this first.
 The access article says verbatim: *"Need help with access or integration? Email
 programming@crossfit.com."* Send four questions before building anything:
 - We're an affiliate in good standing building our own member app and CRM. What CAP access exists for
@@ -872,7 +872,7 @@ programming@crossfit.com."* Send four questions before building anything:
 **Get the licensing answer in writing before building the feature.** One email removes the only real
 legal question in this project.
 
-### Route 1 — alternative: ride a partner platform with an API
+#### Route 1 — alternative: ride a partner platform with an API
 **Subscribe to CAP on SugarWOD, pull it into our CRM via SugarWOD's documented API.**
 
 ```
@@ -898,7 +898,7 @@ without maintaining a parser.
 Setup: create a key at `/gyms/settings/developer-keys` -> `GET /tracks` to find the CAP `track_id` ->
 `GET /workouts?dates=&track_id=` -> map to our model -> programmer reviews -> publish.
 
-### Route 2 — CHOSEN as the interim path: the CAP weekly planning email
+#### Route 2 — CHOSEN as the interim path: the CAP weekly planning email
 Confirmed viable: CAP programming can be sent to a Gmail account. Chosen because it is entirely under
 our control, costs nothing, needs no vendor's goodwill, and the review step is where we wanted a human
 anyway. If an official CrossFit integration ever arrives it swaps in behind the same review-and-publish
@@ -952,12 +952,12 @@ those providers support subdomains, unlike Cloudflare Email Routing.
 > is not enough. **Subscribe a mailbox this week and read Friday's email first.** It costs nothing and
 > it is the one thing that could invalidate this design.
 
-### Route 3 — the Affiliate Toolkit directly
+#### Route 3 — the Affiliate Toolkit directly
 The primary CAP surface, accessed with our own credentials, containing everything. But it's a web app
 not built for machine access: brittle, no contract, and automated access against CrossFit's own portal
 is worth asking about (route 0) before doing at scale.
 
-### Routes that don't work
+#### Routes that don't work
 | Route | Why not |
 |---|---|
 | Google Docs delivery | **Not a CAP platform.** Corrected |
@@ -968,7 +968,7 @@ is worth asking about (route 0) before doing at scale.
 **Interim bridge:** during Phases 1-3, pulling programming from Train is legitimate and gets the app
 working early. Don't let it become permanent.
 
-### Parsing (routes 2 and 3)
+#### Parsing (routes 2 and 3)
 CAP is prose: workout, scaling, whiteboard brief, coaching notes, warm-up, logistics, cool-down. We
 need typed `Workout` / `Movement` / `ScoringType` / `Division` records. LLM structured extraction is the
 right tool.
@@ -978,15 +978,15 @@ right tool.
 > the parse beside the original so a programmer can check it in seconds, and keep the raw source text
 > on every workout record so a bad parse can be re-run without re-fetching.
 
-### Model the four tracks
+#### Model the four tracks
 `Affiliate`, `Compete`, `At-Home`, `Masters 55+` as `WorkoutTrack` records. Decide whether the
 imperial/metric toggle is handled at ingestion or at display time.
 
 ---
 
-## E. Infrastructure — domain, DNS, email
+### E. Infrastructure — domain, DNS, email
 
-### Email architecture
+#### Email architecture
 > [!tip] 🟣 Send CRM mail from a subdomain, never the root
 > `notify.crossfit-otl.com` via Resend, with its own DKIM. This isolates reputation: any system mailing
 > hundreds of members eventually generates complaints, and those must damage the **subdomain's**
@@ -1003,7 +1003,7 @@ reports for a few weeks → root policy to `quarantine`, then `reject`.
 > You will discover forgotten services legitimately sending as the domain. `p=none` with reporting
 > identifies them before their mail starts bouncing.
 
-### Moving DNS to Cloudflare
+#### Moving DNS to Cloudflare
 > [!danger] 🔴 Carry MX, TXT and the Vercel CNAME across explicitly
 > Cloudflare's import scan usually catches existing records, but **verify MX by hand before flipping
 > nameservers.** A missed MX means email silently stops and it may be hours before anyone notices.
@@ -1014,7 +1014,7 @@ reports for a few weeks → root policy to `quarantine`, then `reject`.
 
 ---
 
-## F. Scope — the honest number
+### F. Scope — the honest number
 
 > [!danger] 🔴 12–24 months for a small experienced team
 > Full gym CRM, billing engine, scheduling, workout tracking with leaderboards and PRs, social feed
@@ -1052,9 +1052,9 @@ members to an off-the-shelf tool instead of building sequences, templates and de
 
 ---
 
-# Part IV — Action checklist
+## 🛠️ Part IV — Action checklist
 
-## 🔴 This week, independent of everything else
+### 🔴 This week, independent of everything else
 
 - [ ] **Add SPF, DKIM and DMARC to `crossfit-otl.com`.** The domain is spoofable today and blocks all
       CRM email until fixed. Cheapest, highest-value item on this list.
@@ -1070,7 +1070,7 @@ members to an off-the-shelf tool instead of building sequences, templates and de
       only realistic path to members re-entering bank details, and it's avoidable.
 - [ ] **Do not cancel anything** until extracts are verified complete.
 
-## 🟠 At the Mac mini
+### 🟠 At the Mac mini
 
 - [ ] Mint a Core API key: **Settings → Security & Access → Add API Key**. Store in a secret manager.
 - [ ] Smoke-test: `GET /customers` and `GET /checkins/class` with `API-KEY` header and `companyId`
@@ -1090,7 +1090,7 @@ members to an off-the-shelf tool instead of building sequences, templates and de
 - [ ] Confirm the Instagram account is **Business or Creator**, linked to a Facebook Page
 - [ ] Register a `checkin.created` webhook; verify delivery and signature validation
 
-## 🟢 Then, to build
+### 🟢 Then, to build
 
 - [ ] New GitHub repo · new Supabase project · Vercel project
 - [ ] Move DNS to Cloudflare — **verify MX by hand first**
@@ -1099,7 +1099,7 @@ members to an off-the-shelf tool instead of building sequences, templates and de
 
 ---
 
-# Part V — Open questions blocking decisions
+## ❓ Part V — Open questions blocking decisions
 
 > [!warning] 🟠 The first one changes almost every architectural decision. Answer it first.
 
@@ -1121,7 +1121,7 @@ members to an off-the-shelf tool instead of building sequences, templates and de
 
 ---
 
-# Part VI — Sources
+## 📚 Part VI — Sources
 
 **PushPress API & SDK**
 - `https://www.npmjs.com/package/@pushpress/pushpress` — official TS SDK (primary source for endpoints/auth)
@@ -1173,7 +1173,7 @@ members to an off-the-shelf tool instead of building sequences, templates and de
 
 ---
 
-# Appendix A — `pushpress_extract.py`
+## 📎 Appendix A — `pushpress_extract.py`
 
 Read-only extractor for everything the documented v3 API exposes. Lives beside this document at
 `Migration/pushpress_extract.py`. Endpoints and auth verified against SDK source; pagination is 1-based
@@ -1195,7 +1195,7 @@ cards and bank accounts (Stripe) · tags, campaigns and leads (Grow) · profile 
 
 ---
 
-# Appendix B — Vault file map
+## 🗂️ Appendix B — Vault file map
 
 ```
 vault/6-Projects 🚀/🏋️ OTL Platform/
@@ -1226,6 +1226,14 @@ vault/6-Projects 🚀/🏋️ OTL Platform/
     ├── Infrastructure — Domain, DNS & Email.md
     └── Scope & Phasing — Honest Estimate.md
 ```
+
+---
+
+### 📎 Attachment
+
+The paginated, printable version of this document:
+
+![[OTL Platform — Master Brief.pdf]]
 
 ---
 
