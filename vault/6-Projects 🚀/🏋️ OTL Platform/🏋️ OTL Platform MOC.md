@@ -28,7 +28,7 @@ iOS app to replace the PushPress-hosted OTL app.
 > | File | Purpose |
 > |---|---|
 > | 📄 [[OTL Platform — Master Brief]] | **Start here.** Full conversation verbatim, every research finding with sources, and the complete plan |
-> | 📕 `OTL Platform — Master Brief.pdf` | Same document, 33 pages, paginated with contents — for reading away from Obsidian |
+> | 📕 `OTL Platform — Master Brief.pdf` | Same document, 34 pages, paginated with contents — for reading away from Obsidian |
 
 ---
 
@@ -46,6 +46,7 @@ iOS app to replace the PushPress-hosted OTL app.
 - [ ] **Verify Stripe account ownership** at `dashboard.stripe.com` — 30 min, determines the entire payment plan
 - [ ] **Run the extractor** and reconcile counts — days, protects years of member history
 - [ ] **Ask PushPress in writing** what export departing customers get
+- [ ] **Capture ACH authorization records** for bank-debit members — the only realistic re-entry risk
 - [ ] **Do not cancel anything** until extracts are verified complete
 - [ ] **Add SPF, DKIM and DMARC** to the domain — cheap, and blocks all CRM email until done
 - [ ] **Request the Apple Tap to Pay entitlement** — development then distribution; has real lead time
@@ -66,7 +67,8 @@ iOS app to replace the PushPress-hosted OTL app.
 ## 📚 Quick reference
 
 - PushPress API: `https://api.pushpress.com/v3` · header `API-KEY` · key at Settings → Security & Access
-- Stripe: gym owns its own account · self-serve PAN copy exists as fallback · never store PANs
+- Stripe: gym owns its own account -> **members re-enter nothing** · PAN copy is the fallback · never store PANs
+- 🔴 ACH is the exception: capture each bank-debit member's **authorization date** before leaving
 - Apple: guideline **3.1.3(e)** *prohibits* IAP for real-world services — Stripe is required, no 30% cut
 - Instagram: Basic Display API dead since 2024-12-04 · Graph API + Business account · stories need app review
 - CAP into our CRM: **CAP weekly email → Gmail → webhook → parse → programmer confirms → publish**

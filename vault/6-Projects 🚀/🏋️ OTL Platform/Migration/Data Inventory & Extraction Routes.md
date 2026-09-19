@@ -32,6 +32,7 @@ repeatable data; a scrape gives you rendered strings that break on their next de
 | Reservations & no-shows | API `/reservations` | |
 | Committed Club, streaks, all-time check-ins | **Derive — do not scrape** | Recompute from check-in history; more reliable than copying a number |
 | Cards & bank accounts | **Stripe — never PushPress** | See [[Stripe & Payment Continuity]] |
+| 🔴 **ACH authorization records** — when/how each bank-debit member authorized | PushPress — ❓ verify where it lives | **Time-sensitive.** Without this evidence ACH members may have to re-authorize |
 | Payment / invoice history | Stripe API | Stripe is the source of truth, not the CRM |
 | **Products & services** (Element, scans, merch) | ✅ Core → Reports → Financial → **Retail Sales** → Download Data | Supported CSV/Excel. Set **Advanced Data Options → All Results** |
 | **Sales & POS transaction history** | ✅ Core → Reports → Financial → **Financial Details** | Every payment, refund, discount and fee. Best report for audit |
@@ -93,6 +94,15 @@ That covers the top two-thirds of the table above. The scrape-only rows are the 
 
 ---
 
+> [!danger] 🔴 The ACH authorization evidence deserves its own line on this list
+> Stripe requires whoever debits a bank account to hold the member's authorization and be able to
+> **reconstruct it on request**, per Nacha rules. If payment methods ever need moving to a *different*
+> Stripe account, ACH methods are **skipped entirely** unless the receiving account attests it holds
+> those mandates. The authorizations were given to CrossFit OTL, so we do hold them — but the *records*
+> are in PushPress. Get them out while we're still a customer.
+
+---
+
 ## ✅ Definition of done
 
 Not "the script ran." Reconcile before you trust it:
@@ -102,6 +112,7 @@ Not "the script ran." Reconcile before you trust it:
 - [ ] Check-in totals per member == the all-time number the app shows them
 - [ ] Spot-check 10 members by hand across every field
 - [ ] Every extract archived off the working machine, encrypted
+- [ ] ACH authorization dates captured for every bank-debit member
 
 ---
 

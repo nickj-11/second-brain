@@ -47,11 +47,14 @@ profile photos and social content (app responses).
 
 ## ⏱️ Order of operations
 
-1. **Verify Stripe account ownership** — 30 minutes, determines the whole payment plan
+1. **Verify Stripe account ownership** — 30 minutes, determines the whole payment plan. If it's ours,
+   members re-enter **nothing** and there is no payment migration at all
 2. **Ask PushPress in writing** what export they provide to departing customers
 3. **Run the extractor**, reconcile counts against the UI
-4. **Solve results/PRs** — the only dataset with no supported route
-5. Everything else waits on the build
+4. **Capture ACH authorization records** — the one realistic path to members having to re-enter bank
+   details, and it is avoidable
+5. **Solve results/PRs** — the only dataset with no supported route
+6. Everything else waits on the build
 
 ---
 

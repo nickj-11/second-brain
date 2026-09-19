@@ -376,15 +376,47 @@ Stripe also documents PAN **import** from another processor and PAN **export** t
 migration they require the request to include **both customer records and the associated payment
 data**.
 
+### ACH / bank debits — the one conditional part
+Cards copy freely; bank accounts don't, quite. **Same Stripe account: mandates are untouched, no issue
+at all.** Moving to a *different* Stripe account, Stripe gates it:
+
+> Before the copy begins, the **receiving account must acknowledge and agree that it holds the collected
+> mandates.** If it doesn't agree, **the copy skips ACH payment methods entirely.**
+
+And the standing duty: you must hold the customer's authorization to debit in a form complying with the
+**Nacha Operating Rules**, and **retain data sufficient to provide or reconstruct any ACH
+authorization**, producing evidence to Stripe on request.
+
+**We can legitimately attest this — but only with the records.** The authorizations were given to
+CrossFit OTL, the same legal entity, so we do hold them. What we need is the *evidence*: for each
+bank-debit member, **when and how they authorized.** That lives in PushPress today, which makes it a
+**time-sensitive extraction requirement.** Without it, ACH members get skipped and must re-authorize —
+the single realistic path to "members had to re-enter their bank details," and it is avoidable.
+
+*(Mechanism, for reference: migrating ACH from a non-Stripe processor uses a confirmed `SetupIntent` per
+account carrying `mandate_data[customer_acceptance][type]=offline` with `accepted_at` set to the
+**original** authorization date, and `verification_method=skip` — a capability Stripe enables after
+reviewing how you collect authorization. Which confirms the principle: Stripe honours an existing
+authorization when you can evidence its date.)*
+
 ### Hard rules
 - **Never let a PAN or bank number touch our servers** — not in a database, log, scraped blob, or
   "temporarily." Storing one puts us in **PCI-DSS scope**, an audited compliance programme. New cards
   come in via Stripe Elements (web) / PaymentSheet (mobile); the backend only ever sees `pm_` and `cus_`.
-- **ACH mandates:** bank debits carry a recorded authorisation tied to a merchant and statement
-  descriptor. Confirm with Stripe that existing mandates survive if anything changes. A changed
-  descriptor produces disputes from members who don't recognise the charge.
+- **Statement descriptor:** if it changes, members see a charge they don't recognise and dispute it.
+  Keep it identical, or announce the change before the first charge.
+- **Merchant-initiated transactions:** recurring charges and POS "charge card on file" are off-session
+  MITs. On the same account we inherit whatever PushPress set up at save time — spot-test several
+  off-session charges in the first cycle rather than assuming.
+- **Card account updater:** Stripe can auto-update reissued and expired cards. Confirm it's enabled; it
+  quietly prevents a slow bleed of failed payments.
 - **Do not consolidate OTL into another entity's Stripe account.** Different legal entity = different
-  merchant of record. The authorisations members gave were given to CrossFit OTL.
+  merchant of record. The authorisations members gave were given to CrossFit OTL. Moving them under
+  Classic Pro, Longhorn Forge or anything else breaks that chain, invites disputes, and would genuinely
+  require re-authorisation. **This is the one way to accidentally create the problem we're avoiding.**
+
+**What members experience, done properly: nothing.** No new card, no new bank account, no
+re-authorisation, no interruption. The app changes; the payment doesn't.
 
 ---
 
@@ -600,6 +632,7 @@ corrected plan in §D.
 | Reservations & no-shows | API `/reservations` | |
 | Committed Club, streaks, all-time counts | **Derive from check-ins** | Don't copy the number — recompute |
 | Cards & bank accounts | **Stripe, never PushPress** | See §4 |
+| 🔴 **ACH authorization records** | PushPress — verify where it lives | Time-sensitive; without it ACH members may re-authorize |
 | Payment / invoice history | Stripe API | Stripe is source of truth |
 | Products & services | ✅ Core → Retail Sales export | Supported CSV/Excel |
 | Sales & POS history | ✅ Core → Financial Details export | Payments, refunds, discounts, fees |
@@ -1033,6 +1066,8 @@ members to an off-the-shelf tool instead of building sequences, templates and de
 - [ ] **Ask PushPress in writing** what data export departing customers receive. Get it documented.
 - [ ] **Request the Apple Tap to Pay entitlement** — development first, then distribution. Real lead
       time; nothing else unblocks it.
+- [ ] **Capture ACH authorization records** — when and how each bank-debit member authorized. The
+      only realistic path to members re-entering bank details, and it's avoidable.
 - [ ] **Do not cancel anything** until extracts are verified complete.
 
 ## 🟠 At the Mac mini
