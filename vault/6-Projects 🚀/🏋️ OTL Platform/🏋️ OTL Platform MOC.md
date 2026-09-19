@@ -22,6 +22,16 @@ iOS app to replace the PushPress-hosted OTL app.
 
 ---
 
+## 📌 Hub Documents
+
+> [!abstract] 🟡 One file that contains everything
+> | File | Purpose |
+> |---|---|
+> | 📄 [[OTL Platform — Master Brief]] | **Start here.** Full conversation verbatim, every research finding with sources, and the complete plan |
+> | 📕 `OTL Platform — Master Brief.pdf` | Same document, 29 pages, paginated with contents — for reading away from Obsidian |
+
+---
+
 ## 🗂️ Subfolders
 
 - 📁 [[Incumbent — PushPress MOC]] — what PushPress exposes, what it hides, and how CAP programming reaches it
