@@ -81,5 +81,5 @@ iOS app to replace the PushPress-hosted OTL app.
 
 ## 🔗 Related
 
-- [[Business MOC]] — parent
+- [[CrossFit OTL MOC]] — parent
 - [[People MOC]] — Clay, Javier and anyone else on the build
