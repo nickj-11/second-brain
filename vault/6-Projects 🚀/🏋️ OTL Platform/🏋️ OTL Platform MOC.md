@@ -28,7 +28,7 @@ iOS app to replace the PushPress-hosted OTL app.
 > | File | Purpose |
 > |---|---|
 > | 📄 [[OTL Platform — Master Brief]] | **Start here.** Full conversation verbatim, every research finding with sources, and the complete plan |
-> | 📕 `OTL Platform — Master Brief.pdf` | Same document, 29 pages, paginated with contents — for reading away from Obsidian |
+> | 📕 `OTL Platform — Master Brief.pdf` | Same document, 32 pages, paginated with contents — for reading away from Obsidian |
 
 ---
 
@@ -49,7 +49,7 @@ iOS app to replace the PushPress-hosted OTL app.
 - [ ] **Do not cancel anything** until extracts are verified complete
 - [ ] **Add SPF, DKIM and DMARC** to the domain — cheap, and blocks all CRM email until done
 - [ ] **Request the Apple Tap to Pay entitlement** — development then distribution; has real lead time
-- [ ] **Email `affiliatesupport@crossfit.com`** about structured CAP delivery for affiliates
+- [ ] **Email `programming@crossfit.com`** — CAP access for an affiliate building its own app, and whether that counts as "another platform"
 
 ---
 
@@ -68,7 +68,8 @@ iOS app to replace the PushPress-hosted OTL app.
 - Stripe: gym owns its own account · self-serve PAN copy exists as fallback · never store PANs
 - Apple: guideline **3.1.3(e)** *prohibits* IAP for real-world services — Stripe is required, no 30% cut
 - Instagram: Basic Display API dead since 2024-12-04 · Graph API + Business account · stories need app review
-- CAP into our CRM: **Google Docs delivery**, our own credentials, parse then human-review
+- CAP into our CRM: ride a partner platform API (SugarWOD) · weekly CAP email · Toolkit — **not** Google Docs
+- CAP contact: **`programming@crossfit.com`** · released Fridays **two weeks ahead** · 15 official platforms
 - Domain: GoDaddy registrar + NS · Microsoft 365 mail · `www` on Vercel · **no SPF/DKIM/DMARC yet**
 - POS: Stripe Terminal + Tap to Pay on iPhone (Apple entitlement required) · refunds gated to `pos_admin`
 - Products & sales history: Core → Reports → Financial → Download Data (**All Results**)

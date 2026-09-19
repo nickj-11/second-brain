@@ -36,7 +36,7 @@ repeatable data; a scrape gives you rendered strings that break on their next de
 | **Products & services** (Element, scans, merch) | ✅ Core → Reports → Financial → **Retail Sales** → Download Data | Supported CSV/Excel. Set **Advanced Data Options → All Results** |
 | **Sales & POS transaction history** | ✅ Core → Reports → Financial → **Financial Details** | Every payment, refund, discount and fee. Best report for audit |
 | Sales tax configuration | Core settings — carry across deliberately | Per-product; don't re-derive it |
-| Programming / WODs | CAP via **Google Docs**, our own credentials | Included with affiliation; see [[CAP Programming — Independent Ingestion]] |
+| Programming / WODs | CAP via a partner platform API, the weekly email, or the Toolkit | Included with affiliation; see [[CAP Programming — Independent Ingestion]] |
 | **Workout results, benchmarks, PRs** | 🔴 **No supported export** | Leaderboard export + app scrape only |
 | Comments, reactions, social posts | Almost certainly no export | Decide: migrate, archive, or start fresh |
 

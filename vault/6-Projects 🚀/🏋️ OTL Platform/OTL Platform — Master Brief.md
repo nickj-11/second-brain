@@ -22,6 +22,12 @@ tags:
 > 🔴 **`crossfit-otl.com` has no SPF, DKIM or DMARC.** CRM email sent from it today goes to spam, and
 > the domain is spoofable right now.
 
+> [!danger] 🔴 Correction added 2026-09-19 after reading CrossFit's own support articles
+> An earlier version of this brief said CAP is "delivered to Google Docs" and built the ingestion plan
+> on it. **CrossFit's platform table lists 15 platforms and Google Docs is not among them.** The claim
+> came from a search summary of a marketing page, not a primary source. Section §10 carries the
+> primary-source facts and §D the corrected plan.
+
 ---
 
 ## 🧭 How to use this document
@@ -281,10 +287,10 @@ credential. It belongs to **PushPress the company**, held server-side under a bu
 with CrossFit. It is never issued to an affiliate, appears nowhere in Core or Train settings, and has
 no gym-level equivalent to generate.
 
-**Evidence it is platform-level, not per-gym:** CrossFit's own CAP page states programming is
-delivered to **Google Docs, SugarWOD, Wodify, PushPress, STREAMFIT, BTWB, Strivee, WODBoard and Chalk
-It Pro** — nine separate platform integrations, i.e. nine commercial arrangements. CrossFit publishes
-**no API, no feed specification and no developer access** for CAP anywhere.
+**Evidence it is platform-level, not per-gym:** CrossFit's support documentation lists **15 CAP
+platforms**, each with its own sign-up flow, pricing and support queue — fifteen commercial
+arrangements. CrossFit publishes **no API, no feed specification and no developer access** for CAP.
+Full list in §10.
 
 So "create our own key" would mean becoming a CAP distribution partner: a business conversation with
 CrossFit, not a credential to mint.
@@ -292,10 +298,10 @@ CrossFit, not a credential to mint.
 ### What CAP actually includes
 - **Included with affiliation** — "No extra subscription. No extra cost. Just access."
 - Requires a CrossFit affiliate in good standing; the Train-delivered version also needs a Train subscription
-- Delivered weekly, next week's released **by Friday at the latest**
+- Released **every Friday, two weeks in advance**; platforms sync **nightly**
 - Daily workouts, scaling options, full class plans with coaching notes, warm-ups, timelines
-- Tracks: standard CAP plus an optional **Compete Track**; SugarWOD's materials also reference
-  Affiliate, At Home, Compete and Lifting tracks
+- Tracks: **Affiliate, Compete, At-Home, Masters 55+** (see §10 — not "Lifting", which was older
+  third-party copy)
 - Core ↔ Train **member sync is a separate opt-in toggle** — without it, results don't line up
   against member records
 
@@ -492,6 +498,89 @@ Stripe account — so this is a like-for-like replacement, not a new capability 
 
 ---
 
+## 10. CAP — primary source, from CrossFit's own support knowledge base
+
+Retrieved 2026-09-19 from `crossfit.my.site.com/Support`. **Supersedes every third-party and
+marketing-page claim about CAP, including earlier claims in this document.** Five articles in the
+CrossFit Affiliate Programming topic: `How-to-Access-CAP-Toolkit-Platforms` (last modified
+2026-07-06), `What-CrossFit-Affiliate-Programming-CAP-Includes`, `How-to-Use-and-Share-CAP`,
+`CAP-FAQs-and-Troubleshooting`, `Cardio-conversion-Charts`.
+
+### The contact that matters
+**`programming@crossfit.com`.** All four substantive articles point here, and the access article says
+verbatim: *"Need help with access or integration? Email programming@crossfit.com."* That is an explicit
+invitation to ask about integration — not a generic support queue. It supersedes
+`affiliatesupport@crossfit.com`, suggested earlier from a search result.
+
+### Access
+**Via the Affiliate Toolkit (primary route):** CAP is included with affiliation, no charge from
+CrossFit. Affiliate must be **in good standing**. Coaches can access directly "with valid credentials
+and Affiliate Toolkit access." Staff are added by Toolkit invitation.
+
+**Toolkit status error?** All three must hold: affiliate fees current · trainer credential current
+**and** meeting the Affiliate Agreement's terms · Affiliate Agreement signed.
+
+**Via third-party platforms:** "Setup guides and pricing vary on each platform; please reach out to the
+third-party platform directly." CrossFit charges nothing, but **platform rates vary.**
+
+### Release schedule
+**Every Friday, two weeks in advance.** Programming Calendar available at least two weeks ahead.
+Platforms sync **nightly** ("Workout deleted in platform? Wait for the nightly sync or re-download").
+English only; other languages in development.
+
+*This is more runway than previously recorded — "by Friday at the latest" came from PushPress's page. A
+parse-and-review pipeline has a fortnight of slack, not a weekend.*
+
+### What CAP includes
+Daily programming, seven days/week · lesson plans (warm-ups, whiteboard briefs, scaling, logistics,
+cool-downs, coaching resources) · stimulus and coaching notes · daily videos · supplemental "Work Your
+Weakness" (three strength options, skill work, stamina session) · monthly focus areas · imperial/metric
+toggle · cardio conversion charts.
+
+**Tracks:** Affiliate (classic group classes) · Compete (Open and beyond) · At-Home · Masters 55+.
+
+**CAP vs CrossFit.com:** CrossFit.com is general public with minimal instruction; CAP is affiliates only
+with full lesson plans, scaling and coaching tools.
+
+### Sharing — what CrossFit explicitly permits
+For coaches and staff: add staff to the Toolkit by invitation · **coaches can subscribe to CAP's weekly
+planning email** · save CAP to the mobile home screen.
+
+For members, verbatim: *"You can use SugarWOD, BTWB, Wodify, **or another platform** to share
+programming with members."*
+
+**"Or another platform" is permissive language worth leaning on** — but whether our own purpose-built
+app qualifies is a reasonable reading, not a documented one. Get it in writing from
+`programming@crossfit.com` before building the feature.
+
+### The official platform list — all 15
+| Platform | How to get CAP | Support |
+|---|---|---|
+| Boxmate | Sign up (trial) | `info@boxmateapp.co.uk`; has a CAP-download guide |
+| BoxPlanner | **Coming soon** | — |
+| BTWB | Contact support | `support@btwb.com` |
+| Chalk It Pro | Sign up at `/cap` | `info@chalkitpro.com`; demo library |
+| Hustle Up | Sign up | Zendesk FAQs |
+| Irontrack | Sign up (pricing page) | `info@inrontrack.ee` |
+| Octiv | Request a demo | `support@octivfitness.com` |
+| PushPress | Sign up via CAP x Train partner page | `support@pushpress.com` |
+| StreamFit | Sign up | `support@streamfit.com`; Discord help desk |
+| Strivee | Free trial | `support@strivee.app` |
+| SugarWOD | Sign up via marketplace | `hello@sugarwod.com` |
+| TrainHeroic | Sign up | `support@trainheroic.com`; video tutorial |
+| WellnessLiving | Sign up | Help centre |
+| WODboard | **Accessed through gym settings** | Contact form |
+| Wodify | Sign up via workout marketplace | `support@wodify.com` |
+
+**Not on the list: Google Docs.** Also absent: Mayhem, HWPO, PRVN, Invictus, Brute, Misfit, Bolder —
+those are *other* programming providers that integrate with Train, not CAP delivery channels.
+
+**What the list tells us:** fifteen separate integrations confirm no per-gym CAP credential exists to
+find or recreate — and that **any of these 15 can be our CAP pipe**, which is the basis of the
+corrected plan in §D.
+
+---
+
 # Part III — The plan
 
 ## A. Migration
@@ -515,7 +604,7 @@ Stripe account — so this is a like-for-like replacement, not a new capability 
 | Products & services | ✅ Core → Retail Sales export | Supported CSV/Excel |
 | Sales & POS history | ✅ Core → Financial Details export | Payments, refunds, discounts, fees |
 | Sales tax config | Core settings — carry deliberately | Don't re-derive |
-| Programming / WODs | CAP via **Google Docs**, our credentials | See §D |
+| Programming / WODs | CAP via a partner platform API, the weekly email, or the Toolkit | See §D |
 | **Results, benchmarks, PRs** | 🔴 **No supported export** | Leaderboard export + app scrape |
 | Comments, reactions, posts | No export | Decide: migrate, archive, or start fresh |
 
@@ -729,41 +818,94 @@ The pain point named: changing a workout today needs a computer and a Train logi
 
 ## D. CAP programming into a fully independent CRM
 
-**The route is Google Docs, and it's the one already under our control.** Of the nine CAP delivery
-targets, eight are platforms being replaced. Google Docs is the ninth — affiliate-facing, no platform
-in between. And CAP belongs to the **affiliation**, not to PushPress, so leaving costs nothing.
+> [!danger] 🔴 Rewritten — the earlier plan was built on a wrong fact
+> The previous version ran this pipeline from a **Google Docs** delivery. Google Docs is not one of
+> CrossFit's 15 CAP platforms. Primary-source facts in §10; corrected routes below.
+
+**What survives:** CAP is included with affiliation and belongs to the affiliation, not to PushPress —
+leaving costs nothing. And programming lands **every Friday, two weeks ahead**, so a parse-and-review
+pipeline has a fortnight of slack.
+
+### Route 0 — just ask. Do this first.
+The access article says verbatim: *"Need help with access or integration? Email
+programming@crossfit.com."* Send four questions before building anything:
+- We're an affiliate in good standing building our own member app and CRM. What CAP access exists for
+  that — a feed, an export, a documented integration path?
+- `How-to-Use-and-Share-CAP` permits sharing via "SugarWOD, BTWB, Wodify, **or another platform**."
+  Does our own purpose-built affiliate app qualify?
+- Is there a route to becoming a CAP delivery platform, or an affiliate-scoped equivalent?
+- Any restriction on ingesting CAP into our own system for our own members?
+
+**Get the licensing answer in writing before building the feature.** One email removes the only real
+legal question in this project.
+
+### Route 1 — recommended: ride a partner platform with an API
+**Subscribe to CAP on SugarWOD, pull it into our CRM via SugarWOD's documented API.**
 
 ```
-CrossFit → our Google Doc → Drive/Docs API → parser → staff review → published Workout
-            (CAP delivery)    (our OAuth)     (LLM)   (programmer)    (CRM + app)
+CrossFit -> SugarWOD (CAP subscription) -> SugarWOD API -> our CRM -> OTL app
+              nightly sync                 (documented)    (typed)
 ```
 
-1. **Detect** — poll the Drive folder / doc for the weekly drop (released by Friday at the latest)
-2. **Fetch** — Google Docs API, our own OAuth credentials
-3. **Parse** — doc text → typed records
-4. **Review** — a programmer confirms before it goes live
-5. **Publish** — a `Workout` on the CAP `WorkoutTrack`, visible in app
+- **Supported on both ends.** CrossFit sanctions CAP delivery to SugarWOD; SugarWOD publishes a real
+  developer API with self-serve keys. No scraping, nothing that breaks on a deploy.
+- **Data arrives structured.** `GET /workouts?dates=&track_id=` and `GET /tracks` are typed objects,
+  plus `/movements`, `/benchmarks`, `/barbelllifts` as a controlled vocabulary. Field mapping instead
+  of prose parsing — the strongest argument for this route.
+- **Cheap** — SugarWOD's own materials put CAP delivery around $20/month. Verify current pricing.
+- **It isn't PushPress.** The requirement was independence from PushPress, not from all vendors.
+  SugarWOD becomes a thin, replaceable pipe holding *only* the programming feed — no members, no
+  billing, no results, no app.
 
-**Parsing is the actual work.** CAP arrives as prose written for coaches — workout, scaling, coaching
-notes, warm-up, timeline — not structured data. LLM structured extraction is a genuinely good fit:
-document text in, typed JSON out against our schema, far more robust than regex against prose whose
-format shifts week to week.
+**Two things to verify before committing:** that SugarWOD's API exposes the **CAP** track for a CAP
+subscriber — its docs show a `Workouts HQ` group for CrossFit **mainsite** programming, which is not
+the same thing — and current pricing. The recommended route rests on the first.
+
+Setup: create a key at `/gyms/settings/developer-keys` -> `GET /tracks` to find the CAP `track_id` ->
+`GET /workouts?dates=&track_id=` -> map to our model -> programmer reviews -> publish.
+
+### Route 2 — the CAP weekly planning email
+Coaches can subscribe to CAP's weekly planning email. A mailbox we own is the cleanest ingestion point
+involving no third party.
+
+```
+CrossFit -> programming@crossfit-otl.com -> parser -> staff review -> published Workout
+             (mailbox we own)               (LLM)
+```
+Subscribe a dedicated address, not a person's inbox. Inbound via a Resend/Postmark webhook or IMAP
+poll. Parsing is real work — prose written for coaches, so LLM structured extraction plus mandatory
+human review. **Set this up now regardless of which route wins:** free, starts an archive of real CAP
+content to test a parser against, and it's the fallback if a platform route sours.
+
+### Route 3 — the Affiliate Toolkit directly
+The primary CAP surface, accessed with our own credentials, containing everything. But it's a web app
+not built for machine access: brittle, no contract, and automated access against CrossFit's own portal
+is worth asking about (route 0) before doing at scale.
+
+### Routes that don't work
+| Route | Why not |
+|---|---|
+| Google Docs delivery | **Not a CAP platform.** Corrected |
+| PushPress's CAP credential | Theirs, server-side; 15 platform deals confirm no per-gym key exists |
+| Become a CAP platform | A commercial arrangement. Ask, don't plan on it |
+| Scrape Train permanently | Works, but keeps us dependent on what we're leaving |
+
+**Interim bridge:** during Phases 1-3, pulling programming from Train is legitimate and gets the app
+working early. Don't let it become permanent.
+
+### Parsing (routes 2 and 3)
+CAP is prose: workout, scaling, whiteboard brief, coaching notes, warm-up, logistics, cool-down. We
+need typed `Workout` / `Movement` / `ScoringType` / `Division` records. LLM structured extraction is the
+right tool.
 
 > [!danger] 🔴 Never auto-publish an unreviewed parse
-> A misparsed rep scheme or time cap goes straight onto the whiteboard and into members' logged
-> results. Human review is required, not a nicety. Show the parse beside the original text so the
-> programmer can eyeball it in seconds. **Keep the raw source text on every workout record** so a bad
-> parse can be re-run without re-fetching a doc that may have moved on.
+> A misparsed rep scheme or time cap goes onto the whiteboard and into members' logged results. Show
+> the parse beside the original so a programmer can check it in seconds, and keep the raw source text
+> on every workout record so a bad parse can be re-run without re-fetching.
 
-**Routes that don't work:** using PushPress's CAP credential (theirs, server-side, never issued to
-affiliates) · becoming a CAP distribution partner (a business deal with CrossFit; unrealistic for one
-gym and unnecessary) · scraping Train permanently (works, but keeps us dependent on what we're leaving).
-
-**Interim bridge:** during Phases 1–3, scraping Train for programming is legitimate — it gets the app
-working before the Google Docs pipeline exists. Just don't let it become the permanent answer.
-
-**Licensing:** CAP is CrossFit's IP, licensed to affiliates in good standing. Ingesting it to show *our
-own members* is the intended use. Don't republish publicly or expose it to non-members.
+### Model the four tracks
+`Affiliate`, `Compete`, `At-Home`, `Masters 55+` as `WorkoutTrack` records. Decide whether the
+imperial/metric toggle is handled at ingestion or at display time.
 
 ---
 
@@ -862,8 +1004,10 @@ members to an off-the-shelf tool instead of building sequences, templates and de
 - [ ] Sign into `train.pushpress.com` and walk the programming UI
 - [ ] Mirror the iPhone; walk the OTL app screen by screen against the feature spec
 - [ ] Point mitmproxy at the app and capture its JSON responses for results, benchmarks, profile photos
-- [ ] Locate the **CAP Google Docs delivery** in the Affiliate Toolkit; determine the mechanism
-- [ ] Email `affiliatesupport@crossfit.com` about structured CAP delivery for affiliates
+- [ ] **Email `programming@crossfit.com`** — the four CAP access/licensing questions in §D route 0
+- [ ] Subscribe a dedicated mailbox to the **CAP weekly planning email** — free, start the archive
+- [ ] Trial SugarWOD + CAP, mint a developer key, **verify `GET /tracks` exposes the CAP track**
+- [ ] Confirm Toolkit access: affiliate fees current, trainer credential current, Agreement signed
 - [ ] Confirm CAP is on in Train, and the **Core ↔ Train member sync** toggle is enabled
 - [ ] Confirm the Instagram account is **Business or Creator**, linked to a Facebook Page
 - [ ] Register a `checkin.created` webhook; verify delivery and signature validation
@@ -891,7 +1035,8 @@ members to an off-the-shelf tool instead of building sequences, templates and de
 4. **What is the actual driver — cost, missing features, control, or frustration?** If cost, compare
    honestly against 12–24 months of build time.
 5. **Who maintains it at 6am when billing fails and you're coaching a class?**
-6. **Exact CAP Google Docs delivery mechanism** — shared doc, Drive folder, or a new doc weekly?
+6. **Does SugarWOD's API expose the CAP track, or only CrossFit mainsite?** The recommended CAP route
+   rests on this. And does our own app count as "another platform" for sharing CAP under CrossFit's terms?
 7. **Rebuild marketing automation, or sync to an off-the-shelf tool?**
 8. **Do comments, reactions and social posts migrate, get archived, or start fresh?**
 
@@ -922,7 +1067,12 @@ members to an off-the-shelf tool instead of building sequences, templates and de
 - `https://affiliate.crossfit.com/tools/programming/`
 - `https://www.pushpress.com/partners/crossfit-affiliate-programming-x-train-by-pushpress`
 - `https://www.sugarwod.com/2023/05/crossfit-affiliate-programming-sugarwod/`
-- Contact: `affiliatesupport@crossfit.com`
+- **Contact for CAP access and integration: `programming@crossfit.com`**
+- `https://crossfit.my.site.com/Support/s/topic/0TO3t000000s3FXGAY/crossfit-affiliate-programming` — CAP support topic
+- `https://crossfit.my.site.com/Support/s/article/How-to-Access-CAP-Toolkit-Platforms` — **the 15-platform list**
+- `https://crossfit.my.site.com/Support/s/article/What-CrossFit-Affiliate-Programming-CAP-Includes`
+- `https://crossfit.my.site.com/Support/s/article/How-to-Use-and-Share-CAP` — sharing permissions
+- `https://crossfit.my.site.com/Support/s/article/CAP-FAQs-and-Troubleshooting` — release schedule, nightly sync
 
 **SugarWOD**
 - `https://app.sugarwod.com/developers-api-docs`
@@ -992,6 +1142,7 @@ vault/6-Projects 🚀/🏋️ OTL Platform/
     ├── Member App — Feature Spec.md
     ├── Staff Mode & POS — Roles, Terminal, Refunds.md
     ├── CAP Programming — Independent Ingestion.md
+    ├── CAP — Official Facts & Platform List.md
     ├── Infrastructure — Domain, DNS & Email.md
     └── Scope & Phasing — Honest Estimate.md
 ```

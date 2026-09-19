@@ -19,13 +19,20 @@ tags:
 
 ## 🔍 Why we know it's platform-level, not per-gym
 
-CrossFit's own CAP page states programming is delivered to **Google Docs, SugarWOD, Wodify,
-PushPress, STREAMFIT, BTWB, Strivee, WODBoard and Chalk It Pro**.
+CrossFit's support documentation lists **15 CAP platforms**, each with its own sign-up flow, its own
+pricing and its own support queue: Boxmate, BoxPlanner (coming soon), BTWB, Chalk It Pro, Hustle Up,
+Irontrack, Octiv, PushPress, StreamFit, Strivee, SugarWOD, TrainHeroic, WellnessLiving, WODboard and
+Wodify.
 
-Nine separate platform integrations means nine commercial arrangements — not one API key per gym.
-CrossFit publishes **no API, no feed specification, and no developer access** for CAP anywhere. So
-"create our own key" would mean becoming a CAP distribution partner: a business conversation with
-CrossFit, not a credential we can mint.
+Fifteen separate platform integrations means fifteen commercial arrangements — not one API key per gym.
+CrossFit publishes **no API, no feed specification and no developer access** for CAP. So "create our own
+key" would mean becoming a CAP delivery platform: a business conversation with CrossFit, not a
+credential we can mint.
+
+> [!info] 🟦 Correction, 2026-09-19
+> An earlier version of this note said CAP is delivered to **Google Docs**, from a search summary of a
+> marketing page. CrossFit's own platform table does not list Google Docs. See
+> [[CAP — Official Facts & Platform List]].
 
 ---
 
@@ -44,7 +51,7 @@ Track** adding volume and intensity pathways for the Open and competition season
 ## ⏱️ How the sync behaves
 
 - CAP programming uploads into the Train account **automatically, every week**
-- Next week's programming is released by **Friday at the latest**
+- CrossFit releases programming **every Friday, two weeks in advance**; platforms sync **nightly**
 - What lands: daily workouts, scaling options, and full class plans — coaching notes, warm-ups, timelines
 
 > [!warning] 🟠 Member sync between Core and Train is a separate opt-in toggle
@@ -60,9 +67,9 @@ inside PushPress.** Our app does not need to re-fetch them from CrossFit — it 
 *out* of PushPress, along with the scores members log against them. That is the real blocker; see
 [[Workout & PR Data — Access Options]].
 
-If we ever do want CAP content directly in our own app, the route we actually control is the one
-CrossFit gives affiliates: **CAP is delivered to Google Docs** and lives in the Affiliate Toolkit.
-Pulling from our own copy via the Google Docs API uses our credentials, not anyone's partner key.
+If we want CAP in our own app, the routes are the Affiliate Toolkit (our own credentials), the **CAP
+weekly planning email** coaches can subscribe to, or riding a partner platform that has a documented
+API. See [[CAP Programming — Independent Ingestion]].
 
 Other programming providers wired into Train the same way, if we want to switch or add a second
 track: Mayhem, HWPO, PRVN, Invictus, Brute, Misfit, Bolder.
@@ -74,7 +81,7 @@ track: Mayhem, HWPO, PRVN, Invictus, Brute, Misfit, Bolder.
 - [ ] Log into Train, confirm CAP is switched on and this week's programming actually landed
 - [ ] Confirm the Core ↔ Train **member sync** toggle is enabled
 - [ ] Spot-check that a logged score in the member app shows against the right member in Core
-- [ ] Locate our CAP Google Docs delivery in the Affiliate Toolkit as a fallback content source
+- [ ] Confirm Toolkit access is healthy: affiliate fees current, trainer credential current, Agreement signed
 
 ---
 
@@ -83,3 +90,4 @@ track: Mayhem, HWPO, PRVN, Invictus, Brute, Misfit, Bolder.
 - [[Incumbent — PushPress MOC]] — parent
 - [[Workout & PR Data — Access Options]] — the actual hard part
 - [[SugarWOD API — Industry Comparison]] — another CAP partner, same results wall
+- [[CAP — Official Facts & Platform List]] — primary-source facts from CrossFit
