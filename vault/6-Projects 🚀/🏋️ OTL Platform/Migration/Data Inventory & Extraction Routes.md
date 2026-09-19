@@ -33,7 +33,10 @@ repeatable data; a scrape gives you rendered strings that break on their next de
 | Committed Club, streaks, all-time check-ins | **Derive — do not scrape** | Recompute from check-in history; more reliable than copying a number |
 | Cards & bank accounts | **Stripe — never PushPress** | See [[Stripe & Payment Continuity]] |
 | Payment / invoice history | Stripe API | Stripe is the source of truth, not the CRM |
-| Programming / WODs | Re-subscribe to CAP directly | Included with affiliation; see the Incumbent notes |
+| **Products & services** (Element, scans, merch) | ✅ Core → Reports → Financial → **Retail Sales** → Download Data | Supported CSV/Excel. Set **Advanced Data Options → All Results** |
+| **Sales & POS transaction history** | ✅ Core → Reports → Financial → **Financial Details** | Every payment, refund, discount and fee. Best report for audit |
+| Sales tax configuration | Core settings — carry across deliberately | Per-product; don't re-derive it |
+| Programming / WODs | CAP via **Google Docs**, our own credentials | Included with affiliation; see [[CAP Programming — Independent Ingestion]] |
 | **Workout results, benchmarks, PRs** | 🔴 **No supported export** | Leaderboard export + app scrape only |
 | Comments, reactions, social posts | Almost certainly no export | Decide: migrate, archive, or start fresh |
 
@@ -108,3 +111,4 @@ Not "the script ran." Reconcile before you trust it:
 - [[Stripe & Payment Continuity]] — the payments half
 - [[Cutover Plan & Comms Safety]] — what happens after extraction
 - [[Workout & PR Data — Access Options]] — the results gap in detail
+- [[Staff Mode & POS — Roles, Terminal, Refunds]] — what the products and sales data feeds

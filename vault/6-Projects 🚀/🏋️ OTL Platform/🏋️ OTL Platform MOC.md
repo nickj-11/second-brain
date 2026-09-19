@@ -17,6 +17,8 @@ iOS app to replace the PushPress-hosted OTL app.
 > 🔴 **Workout results, benchmarks and PRs have no export path** — the one dataset at real risk, and
 > the one to solve while still a paying customer.
 > 🟠 Honest scope is **12–24 months** for a small team. Phased so each step stands alone.
+> 🔴 And one to fix this week: **`crossfit-otl.com` has no SPF, DKIM or DMARC** — CRM email sent from
+> it today would go straight to spam. See [[Infrastructure — Domain, DNS & Email]].
 
 ---
 
@@ -35,6 +37,9 @@ iOS app to replace the PushPress-hosted OTL app.
 - [ ] **Run the extractor** and reconcile counts — days, protects years of member history
 - [ ] **Ask PushPress in writing** what export departing customers get
 - [ ] **Do not cancel anything** until extracts are verified complete
+- [ ] **Add SPF, DKIM and DMARC** to the domain — cheap, and blocks all CRM email until done
+- [ ] **Request the Apple Tap to Pay entitlement** — development then distribution; has real lead time
+- [ ] **Email `affiliatesupport@crossfit.com`** about structured CAP delivery for affiliates
 
 ---
 
@@ -53,6 +58,10 @@ iOS app to replace the PushPress-hosted OTL app.
 - Stripe: gym owns its own account · self-serve PAN copy exists as fallback · never store PANs
 - Apple: guideline **3.1.3(e)** *prohibits* IAP for real-world services — Stripe is required, no 30% cut
 - Instagram: Basic Display API dead since 2024-12-04 · Graph API + Business account · stories need app review
+- CAP into our CRM: **Google Docs delivery**, our own credentials, parse then human-review
+- Domain: GoDaddy registrar + NS · Microsoft 365 mail · `www` on Vercel · **no SPF/DKIM/DMARC yet**
+- POS: Stripe Terminal + Tap to Pay on iPhone (Apple entitlement required) · refunds gated to `pos_admin`
+- Products & sales history: Core → Reports → Financial → Download Data (**All Results**)
 
 ---
 
