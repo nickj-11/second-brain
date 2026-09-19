@@ -46,6 +46,11 @@ Core can export class and client scores and results from the browser (Train → 
 Manual and unscheduled, but good enough to prove out the analytics and PR logic on real data while
 option 1 is in flight. Treat it as a seed load, never as the sync mechanism.
 
+> [!info] 🟦 Verified 2026-09-19: this is an industry norm, not a PushPress gap
+> SugarWOD — another CAP partner, with the most openly documented API in the space — also exposes no
+> athlete scores. Its performance-summary endpoints are published but marked "not yet available."
+> **Switching platforms does not solve this.** See [[SugarWOD API — Industry Comparison]].
+
 ### 4. Branded member app
 PushPress sells a white-label branded member app (their docs cover the Apple Developer account
 setup). If the goal is mostly "our gym's name on the app our members already use", this may beat
@@ -67,6 +72,7 @@ an unsanctioned path. Not worth it when option 1 is an email.
 - [ ] Register a webhook on `checkin.created` and confirm delivery + signature verification
 - [ ] Pull one leaderboard export to seed the results schema
 - [ ] Price the branded app option for comparison
+- [ ] Locate our CAP Google Docs delivery in the Affiliate Toolkit — the one content route we control outright
 
 ---
 
@@ -76,3 +82,4 @@ an unsanctioned path. Not worth it when option 1 is an email.
 - [[PushPress API — Keys & Auth]] — minting the key
 - [[PushPress Platform API — Endpoint Inventory]] — the full surface, and the gap
 - [[CrossFit Affiliate Programming → Train Sync]] — programming side, already solved
+- [[SugarWOD API — Industry Comparison]] — the control case proving this gap is industry-wide
