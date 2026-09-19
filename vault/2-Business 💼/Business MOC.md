@@ -8,14 +8,13 @@ tags:
 
 Companies, products, clients, contracts, and anything that makes or costs money at work.
 
-> [!info] 🟦 Empty for now — this fills itself in as you and Claude work
+> [!info] 🟦 One build live: the OTL platform, replacing PushPress at CrossFit OTL
 
 ---
 
 ## 🗂️ Subfolders
 
-*(None yet. Suggested starting points: one folder per company or product, plus `📄 Contracts`
-and `🧾 Bookkeeping`. Create a folder, add a `<Folder Name> MOC.md`, and link it here.)*
+- 📁 [[🏋️ OTL Platform MOC]] — replacing PushPress with our own CRM, member web app and iOS app for CrossFit OTL
 
 ---
 

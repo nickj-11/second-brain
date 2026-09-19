@@ -8,13 +8,14 @@ tags:
 
 One folder per active project. When a project ends, keep the folder — the writeups are the point.
 
-> [!info] 🟦 One project live: the OTL platform, replacing PushPress
+> [!info] 🟦 Empty for now — this fills itself in as you and Claude work
 
 ---
 
 ## 🗂️ Subfolders
 
-- 📁 [[🏋️ OTL Platform MOC]] — replacing PushPress with our own CRM, member web app and iOS app for CrossFit OTL
+*(None yet. Ask Claude to "start a project folder for ___" and it will scaffold the folder,
+its MOC, and the link here.)*
 
 ---
 

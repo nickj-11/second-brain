@@ -1198,7 +1198,7 @@ cards and bank accounts (Stripe) · tags, campaigns and leads (Grow) · profile 
 ## 🗂️ Appendix B — Vault file map
 
 ```
-vault/6-Projects 🚀/🏋️ OTL Platform/
+vault/2-Business 💼/🏋️ OTL Platform/
 ├── 🏋️ OTL Platform MOC.md              ← start here
 ├── OTL Platform — Master Brief.md        ← this document
 ├── OTL Platform — Master Brief.pdf
