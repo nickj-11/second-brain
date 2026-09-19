@@ -8,14 +8,13 @@ tags:
 
 One folder per active project. When a project ends, keep the folder — the writeups are the point.
 
-> [!info] 🟦 Empty for now — this fills itself in as you and Claude work
+> [!info] 🟦 One project live: the gym software app built on PushPress
 
 ---
 
 ## 🗂️ Subfolders
 
-*(None yet. Ask Claude to "start a project folder for ___" and it will scaffold the folder,
-its MOC, and the link here.)*
+- 📁 [[🏋️ Gym App — PushPress MOC]] — building our gym software on top of PushPress: API access, workout sync, member scores and PRs
 
 ---
 
