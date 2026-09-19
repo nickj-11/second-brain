@@ -34,6 +34,10 @@ kept() { printf '  \033[34m!\033[0m %s %s\n' "$1" "${dim}(differs — yours kept
 skip() { printf '  \033[2m=\033[0m %s\n' "$*"; }
 die()  { printf '\033[31merror:\033[0m %s\n' "$*" >&2; exit 1; }
 
+TMPFILES=""
+cleanup() { [ -n "$TMPFILES" ] && rm -f $TMPFILES; }
+trap cleanup EXIT
+
 while [ $# -gt 0 ]; do
   case "$1" in
     --vault)   VAULT="${2:-}"; shift 2 ;;
@@ -66,7 +70,7 @@ detect_vaults() {
 }
 
 if [ -z "$VAULT" ]; then
-  FOUND="$(mktemp)"; trap 'rm -f "$FOUND"' EXIT
+  FOUND="$(mktemp)"; TMPFILES="$TMPFILES $FOUND"
   detect_vaults > "$FOUND" || true
   n="$(wc -l < "$FOUND" | tr -d ' ')"
   case "$n" in
@@ -88,8 +92,27 @@ VAULT="${VAULT/#\~/$HOME}"; VAULT="${VAULT%/}"
 [ -d "$VAULT" ] || die "vault does not exist: $VAULT"
 VAULT="$(cd "$VAULT" && pwd -P)"
 
+# --only may be given without its emoji: match a unique directory by prefix.
+SCAN="$SRC"
+if [ -n "$ONLY" ]; then
+  if [ -d "$SRC/$ONLY" ]; then
+    SCAN="$SRC/$ONLY"
+  else
+    MATCHES="$(mktemp)"; TMPFILES="$TMPFILES $MATCHES"
+    find "$SRC" -mindepth 1 -maxdepth 1 -type d -name "${ONLY}*" > "$MATCHES"
+    c="$(wc -l < "$MATCHES" | tr -d ' ')"
+    case "$c" in
+      0) die "nothing in vault/ matches --only \"$ONLY\"" ;;
+      1) SCAN="$(cat "$MATCHES")"; say "Matched --only \"$ONLY\" -> $(basename "$SCAN")" ;;
+      *) say "--only \"$ONLY\" is ambiguous:"
+         while IFS= read -r m; do printf '  %s\n' "$(basename "$m")"; done < "$MATCHES"
+         die "be more specific" ;;
+    esac
+  fi
+fi
+
 say ""
-say "  ${bold}from${off}  $SRC${ONLY:+/$ONLY}"
+say "  ${bold}from${off}  ${SCAN#"$REPO"/}"
 say "  ${bold}to${off}    $VAULT"
 [ "$DRY_RUN" -eq 1 ] && say "  ${bold}mode${off}  dry run — nothing will be written"
 [ "$FORCE" -eq 1 ] && say "  ${bold}mode${off}  --force — existing files will be updated (backed up first)"
@@ -115,7 +138,7 @@ while IFS= read -r -d '' f; do
   else
     kept "$rel"; left=$((left+1))
   fi
-done < <(find "$SRC${ONLY:+/$ONLY}" -type f -print0)
+done < <(find "$SCAN" -type f -print0)
 
 say ""
 say "  ${bold}${added}${off} new   ${bold}${updated}${off} updated   ${bold}${same}${off} already current   ${bold}${left}${off} yours, left alone"
