@@ -8,14 +8,16 @@ tags:
 
 Companies, products, clients, contracts, and anything that makes or costs money at work.
 
-> [!info] 🟦 Empty for now — this fills itself in as you and Claude work
+> [!info] 🟦 One company so far — OTL Rental LLC
 
 ---
 
 ## 🗂️ Subfolders
 
-*(None yet. Suggested starting points: one folder per company or product, plus `📄 Contracts`
-and `🧾 Bookkeeping`. Create a folder, add a `<Folder Name> MOC.md`, and link it here.)*
+- 📁 [[OTL Rental LLC MOC]] — formation papers, governance, and the managing-member authority packet
+
+*(Suggested additions: one folder per company or product, plus `📄 Contracts` and `🧾 Bookkeeping`.
+Create a folder, add a `<Folder Name> MOC.md`, and link it here.)*
 
 ---
 

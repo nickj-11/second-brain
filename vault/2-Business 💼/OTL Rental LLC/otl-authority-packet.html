@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>OTL Rental LLC — Managing Member Authority Packet</title>
+<style>
+  @page { size: Letter; margin: 1in 1in 0.9in 1in; }
+
+  html { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+
+  body {
+    font-family: "Times New Roman", Times, Georgia, serif;
+    font-size: 11.5pt;
+    line-height: 1.5;
+    color: #000;
+    background: #fff;
+    margin: 0;
+  }
+
+  .doc { page-break-after: always; }
+  .doc:last-child { page-break-after: auto; }
+
+  h1 {
+    font-size: 13.5pt;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    margin: 0 0 0.15in;
+    line-height: 1.35;
+  }
+
+  h2.entity {
+    font-size: 12.5pt;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    font-weight: bold;
+    margin: 0 0 0.05in;
+  }
+
+  .subtitle {
+    text-align: center;
+    font-size: 10.5pt;
+    font-style: italic;
+    margin: 0 0 0.25in;
+  }
+
+  .rule { border: none; border-top: 1.2pt solid #000; margin: 0.12in 0 0.22in; }
+
+  p { margin: 0 0 0.14in; text-align: justify; }
+  .indent { text-indent: 0.35in; }
+
+  /* fill-in blanks */
+  .fill {
+    display: inline-block;
+    border-bottom: 1pt solid #000;
+    min-width: 1.6in;
+    height: 1.05em;
+    vertical-align: baseline;
+  }
+  .fill.sm  { min-width: 0.9in; }
+  .fill.md  { min-width: 2.4in; }
+  .fill.lg  { min-width: 3.4in; }
+  .fill.full{ min-width: 100%; }
+
+  .nowrap { white-space: nowrap; }
+  .label { font-size: 8.5pt; text-transform: uppercase; letter-spacing: 0.05em; }
+
+  ol.resolutions { margin: 0.05in 0 0.18in 0; padding-left: 0.32in; }
+  ol.resolutions > li { margin-bottom: 0.13in; text-align: justify; }
+  ul.powers { margin: 0.06in 0 0.12in 0.1in; padding-left: 0.3in; }
+  ul.powers li { margin-bottom: 0.05in; text-align: left; }
+
+  table { width: 100%; border-collapse: collapse; margin: 0.12in 0 0.18in; }
+  th, td { border: 0.8pt solid #000; padding: 0.07in 0.08in; font-size: 10.5pt; text-align: left; vertical-align: bottom; }
+  th { font-size: 8.5pt; text-transform: uppercase; letter-spacing: 0.04em; }
+  td.sig { height: 0.5in; }
+
+  .sigblock { margin-top: 0.22in; page-break-inside: avoid; }
+  .sigrow { display: flex; gap: 0.4in; margin-bottom: 0.26in; }
+  .sigcell { flex: 1; }
+  .sigline { border-bottom: 1pt solid #000; height: 0.42in; }
+  .sigcap { font-size: 9pt; padding-top: 2pt; }
+
+  .notary {
+    border: 1pt solid #000;
+    padding: 0.14in 0.16in;
+    margin-top: 0.28in;
+    font-size: 10pt;
+    page-break-inside: avoid;
+  }
+  .notary p { margin-bottom: 0.1in; }
+  .notary .hdr {
+    text-align: center; font-weight: bold; text-transform: uppercase;
+    font-size: 9.5pt; letter-spacing: 0.05em; margin-bottom: 0.12in;
+  }
+  .notary .small { font-size: 8.5pt; font-style: italic; text-align: center; margin-bottom: 0.12in; }
+  .seal {
+    float: right; width: 1.5in; height: 1.05in; border: 0.8pt dashed #555;
+    text-align: center; font-size: 7.5pt; letter-spacing: 0.04em;
+    padding-top: 0.42in; box-sizing: border-box; margin-left: 0.15in; color: #555;
+  }
+
+  .footnote {
+    font-size: 8.5pt; font-style: italic; color: #222;
+    border-top: 0.6pt solid #666; padding-top: 0.06in; margin-top: 0.3in;
+  }
+
+  .caution {
+    border: 1.2pt solid #000; background: #f2f2f2;
+    padding: 0.14in 0.16in; font-size: 10pt; margin-bottom: 0.22in;
+  }
+  .caution p { text-align: left; }
+  .caution p:last-child { margin-bottom: 0; }
+
+  .letterhead { text-align: center; margin-bottom: 0.3in; }
+  .letterhead .name { font-size: 15pt; font-weight: bold; letter-spacing: 0.08em; text-transform: uppercase; }
+  .letterhead .addr { font-size: 10pt; margin-top: 0.06in; }
+
+  .cover h1 { font-size: 15pt; margin-bottom: 0.25in; }
+  .cover ol { padding-left: 0.3in; }
+  .cover li { margin-bottom: 0.12in; text-align: left; }
+  .cover h3 { font-size: 11pt; text-transform: uppercase; letter-spacing: 0.05em; margin: 0.25in 0 0.1in; }
+</style>
+</head>
+<body>
+
+<!-- =============== PAGE 1: HOW TO USE (not part of the executed documents) =============== -->
+<section class="doc cover">
+  <h1>Managing Member Authority Packet<br>OTL Rental LLC</h1>
+  <p class="subtitle">Instruction sheet — this page is not part of the signed documents. Do not submit it.</p>
+  <hr class="rule">
+
+  <div class="caution">
+    <p><strong>What these papers do, and what they don't.</strong> A person becomes a managing member of an LLC through the company's operating agreement (and, in some states, its articles of organization or a filed statement of authority) — not through a certificate. The forms in this packet are the standard way an LLC <em>evidences</em> that existing authority to a bank, title company, insurer, lender, or vendor. They carry weight because the company's members sign them under oath, before a notary, and become responsible for what they state.</p>
+    <p>Sign these only if the facts stated in them are true and are backed by the operating agreement. If Nichilad Jaime is not yet designated as managing member in that agreement, amend the agreement first — then sign these.</p>
+  </div>
+
+  <h3>What's in the packet</h3>
+  <ol>
+    <li><strong>Unanimous Written Consent &amp; Resolution of the Members</strong> — the core document. The members of the company resolve and confirm that Nichilad Jaime is the Managing Member and spell out what he or she is authorized to do. This is what most banks and lenders ask for.</li>
+    <li><strong>Certificate of Incumbency and Authority</strong> — a one-page certification, with a specimen signature, that identifies who holds which office. Banks use it to match the signature on file.</li>
+    <li><strong>Statement of Authority</strong> — the version used for real estate and recording. In states that follow the Revised Uniform LLC Act, this is filed with the Secretary of State (and recorded with the county for real property) and gives constructive notice to the public.</li>
+    <li><strong>Certification Letter</strong> — a short letterhead letter for the counterparties that just need something in the file.</li>
+  </ol>
+
+  <h3>Before you print</h3>
+  <ol>
+    <li>Confirm the exact legal spelling of the name against a government-issued ID and the operating agreement. The packet is typed as <strong>NICHILAD JAIME</strong>; if the agreement or ID differs by even a letter, correct every page before signing.</li>
+    <li>Confirm the exact registered name of the entity, including the suffix, as shown on the Secretary of State's record — <strong>OTL Rental LLC</strong>.</li>
+    <li>Fill in the state of formation, the date of the operating agreement, and the entity file/EIN number where blanks appear.</li>
+    <li>List <em>every</em> current member on the signature pages. A consent signed by fewer than all members is not unanimous and banks will reject it.</li>
+  </ol>
+
+  <h3>Signing</h3>
+  <ol>
+    <li>Print single-sided on letter paper. Use blue or black ink.</li>
+    <li>Do not sign until you are in front of the notary — the notary must witness the signature.</li>
+    <li>Bring photo ID for every signer.</li>
+    <li>Keep the signed originals in the company's records book. Give counterparties copies, or notarized duplicate originals if they insist.</li>
+    <li>Most banks also want: the filed articles of organization, the operating agreement, the EIN letter, and ID for each signer. Bring them.</li>
+  </ol>
+
+  <h3>One caveat</h3>
+  <p>Requirements for statements of authority, notarial wording, and what a bank will accept vary by state. Have a licensed attorney in the state of formation review this packet before you rely on it for anything significant — a loan, a property transfer, or a lease.</p>
+
+  <p class="footnote">This packet is a document template, not legal advice, and no attorney-client relationship is created by its use.</p>
+</section>
+
+<!-- =============== PAGE 2-3: WRITTEN CONSENT / RESOLUTION =============== -->
+<section class="doc">
+  <h2 class="entity">OTL Rental LLC</h2>
+  <p class="subtitle">a <span class="fill sm"></span> limited liability company</p>
+  <h1>Unanimous Written Consent and Resolution of the Members<br>Designation of Managing Member and Certificate of Authority</h1>
+  <hr class="rule">
+
+  <p class="indent">The undersigned, being all of the Members of <strong>OTL RENTAL LLC</strong>, a limited liability company organized under the laws of the State of <span class="fill"></span> (the &ldquo;<strong>Company</strong>&rdquo;), acting by unanimous written consent in lieu of a meeting as permitted by the Company&rsquo;s Operating Agreement dated <span class="fill sm"></span>, as amended (the &ldquo;<strong>Operating Agreement</strong>&rdquo;), and by the applicable limited liability company act of that State, hereby adopt the following recitals and resolutions, effective as of <span class="fill sm"></span>, 20<span class="fill" style="min-width:0.4in"></span>.</p>
+
+  <p><strong>WHEREAS</strong>, the Company is a duly organized and validly existing limited liability company in good standing under the laws of its State of formation, bearing entity file number <span class="fill md"></span>; and</p>
+
+  <p><strong>WHEREAS</strong>, the Operating Agreement provides for the management of the Company by one or more managing members; and</p>
+
+  <p><strong>WHEREAS</strong>, the Members wish to confirm of record the designation and continuing authority of the Managing Member, and to furnish evidence of that authority to banks, title companies, lenders, insurers, lessors, governmental agencies, and other third parties dealing with the Company;</p>
+
+  <p><strong>NOW, THEREFORE, BE IT RESOLVED</strong> as follows:</p>
+
+  <ol class="resolutions">
+    <li><strong>Designation.</strong> <strong>NICHILAD JAIME</strong> is a Member of the Company and is hereby designated, confirmed, and ratified as the <strong>Managing Member</strong> of the Company, having served in that capacity since <span class="fill sm"></span>, 20<span class="fill" style="min-width:0.4in"></span>, and shall continue to serve until resignation, removal, or replacement in accordance with the Operating Agreement.</li>
+
+    <li><strong>Authority.</strong> The Managing Member is authorized, empowered, and directed to act for and on behalf of the Company, and to bind the Company, acting alone and without the further consent or joinder of any other Member, with respect to the following:
+      <ul class="powers">
+        <li>to negotiate, execute, deliver, amend, and terminate contracts, leases, rental agreements, purchase agreements, and other instruments in the name of the Company;</li>
+        <li>to open, maintain, and close deposit, savings, and merchant accounts in the name of the Company at any financial institution; to designate and remove authorized signers; and to sign checks, drafts, transfers, and withdrawals;</li>
+        <li>to apply for, obtain, and execute loans, notes, lines of credit, guaranties, security agreements, mortgages, and deeds of trust, and to pledge or encumber Company assets in connection therewith;</li>
+        <li>to acquire, hold, lease, manage, improve, encumber, and dispose of real and personal property of the Company, and to execute deeds, bills of sale, and closing documents;</li>
+        <li>to procure and bind insurance, file and settle claims, and execute releases;</li>
+        <li>to engage, direct, and terminate employees, contractors, agents, attorneys, and accountants, and to fix their compensation;</li>
+        <li>to apply for licenses and permits, and to sign, file, and submit tax returns, registrations, reports, and other filings with any federal, state, or local authority; and</li>
+        <li>to do all other acts, and execute all other documents, that the Managing Member deems necessary or appropriate to carry on the business of the Company.</li>
+      </ul>
+      <p style="margin-left:0.1in;"><em>Limitations, if any, on the foregoing authority (if none, write &ldquo;NONE&rdquo;):</em><br>
+      <span class="fill full"></span><br><span class="fill full"></span></p>
+    </li>
+
+    <li><strong>Reliance by Third Parties.</strong> Any person or entity dealing with the Company is authorized to rely upon this Consent, and upon a copy hereof certified by any Member, as conclusive evidence of the Managing Member&rsquo;s authority, and shall be under no obligation to inquire further, until such person or entity receives written notice of revocation or modification from the Company.</li>
+
+    <li><strong>Ratification.</strong> All acts previously taken by <strong>NICHILAD JAIME</strong> on behalf of the Company within the scope of the authority described above are hereby ratified, approved, and confirmed in all respects.</li>
+
+    <li><strong>Certification.</strong> The undersigned certify that the foregoing is true and correct, that it is consistent with the Operating Agreement and the Articles of Organization of the Company as currently in effect, that it has not been amended, modified, or rescinded, and that it remains in full force and effect as of the date written below.</li>
+  </ol>
+
+  <p class="indent">This Consent may be executed in counterparts, each of which shall be deemed an original, and shall be filed with the records of the Company.</p>
+
+  <div class="sigblock">
+    <p style="margin-bottom:0.1in;"><strong>IN WITNESS WHEREOF</strong>, the undersigned, constituting all of the Members of the Company, have executed this Consent as of the date first written above.</p>
+
+    <div class="sigrow">
+      <div class="sigcell">
+        <div class="sigline"></div>
+        <div class="sigcap">Signature of Member</div>
+      </div>
+      <div class="sigcell">
+        <div class="sigline"></div>
+        <div class="sigcap">Print name &amp; title &nbsp;|&nbsp; Ownership %&nbsp;: _______</div>
+      </div>
+    </div>
+
+    <div class="sigrow">
+      <div class="sigcell">
+        <div class="sigline"></div>
+        <div class="sigcap">Signature of Member</div>
+      </div>
+      <div class="sigcell">
+        <div class="sigline"></div>
+        <div class="sigcap">Print name &amp; title &nbsp;|&nbsp; Ownership %&nbsp;: _______</div>
+      </div>
+    </div>
+
+    <div class="sigrow">
+      <div class="sigcell">
+        <div class="sigline"></div>
+        <div class="sigcap">Signature of Member</div>
+      </div>
+      <div class="sigcell">
+        <div class="sigline"></div>
+        <div class="sigcap">Print name &amp; title &nbsp;|&nbsp; Ownership %&nbsp;: _______</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="notary">
+    <div class="seal">NOTARY SEAL / STAMP</div>
+    <div class="hdr">Notary Acknowledgment</div>
+    <p class="small">A notary public or other officer completing this certificate verifies only the identity of the individual who signed the document to which this certificate is attached, and not the truthfulness, accuracy, or validity of that document.</p>
+    <p>State of <span class="fill"></span> &nbsp;&nbsp; County of <span class="fill"></span></p>
+    <p>On <span class="fill sm"></span>, 20<span class="fill" style="min-width:0.4in"></span>, before me, <span class="fill md"></span>, Notary Public, personally appeared <span class="fill md"></span>, who proved to me on the basis of satisfactory evidence to be the person(s) whose name(s) is/are subscribed to the within instrument and acknowledged to me that he/she/they executed the same in his/her/their authorized capacity(ies).</p>
+    <p>I certify under PENALTY OF PERJURY that the foregoing paragraph is true and correct.</p>
+    <p style="margin-top:0.16in;">Signature <span class="fill lg"></span> &nbsp; <span class="nowrap">My commission expires <span class="fill sm"></span></span></p>
+  </div>
+
+  <p class="footnote">Unanimous Written Consent of the Members — OTL Rental LLC — Designation of Managing Member</p>
+</section>
+
+<!-- =============== PAGE: CERTIFICATE OF INCUMBENCY =============== -->
+<section class="doc">
+  <h2 class="entity">OTL Rental LLC</h2>
+  <h1>Certificate of Incumbency and Authority</h1>
+  <hr class="rule">
+
+  <p class="indent">The undersigned, a Member of <strong>OTL RENTAL LLC</strong>, a limited liability company organized under the laws of the State of <span class="fill"></span> (the &ldquo;Company&rdquo;), being duly authorized, hereby certifies to any bank, title company, lender, insurer, lessor, or other party relying hereon that:</p>
+
+  <p><strong>1.</strong> The Company is duly organized, validly existing, and in good standing under the laws of its State of formation, entity file number <span class="fill md"></span>, EIN <span class="fill sm"></span>.</p>
+
+  <p><strong>2.</strong> The persons named below are the duly designated and acting members and officers of the Company, holding the offices set opposite their names, and the signatures appearing beside their names are their genuine signatures:</p>
+
+  <table>
+    <thead>
+      <tr>
+        <th style="width:34%">Name</th>
+        <th style="width:26%">Title / Office</th>
+        <th style="width:40%">Specimen Signature</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>NICHILAD JAIME</strong></td>
+        <td><strong>Managing Member</strong></td>
+        <td class="sig"></td>
+      </tr>
+      <tr>
+        <td class="sig"></td>
+        <td></td>
+        <td class="sig"></td>
+      </tr>
+      <tr>
+        <td class="sig"></td>
+        <td></td>
+        <td class="sig"></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p><strong>3.</strong> <strong>NICHILAD JAIME</strong>, as Managing Member, is authorized under the Company&rsquo;s Operating Agreement and by resolution of its Members to act alone on behalf of the Company, to execute and deliver instruments in the Company&rsquo;s name, and to bind the Company thereby, including without limitation the opening and operation of accounts, the execution of leases and contracts, the borrowing of funds, and the conveyance and encumbrance of Company property.</p>
+
+  <p><strong>4.</strong> The authority described above has not been revoked, modified, or limited, and remains in full force and effect as of the date of this Certificate. The recipient of this Certificate may rely upon it until it receives written notice to the contrary from the Company.</p>
+
+  <p><strong>5.</strong> The undersigned declares under penalty of perjury under the laws of the State of <span class="fill"></span> that the foregoing is true and correct.</p>
+
+  <div class="sigblock">
+    <p>Dated: <span class="fill"></span>, 20<span class="fill" style="min-width:0.4in"></span></p>
+    <div class="sigrow">
+      <div class="sigcell">
+        <div class="sigline"></div>
+        <div class="sigcap">Signature of certifying Member</div>
+      </div>
+      <div class="sigcell">
+        <div class="sigline"></div>
+        <div class="sigcap">Print name and title</div>
+      </div>
+    </div>
+    <p style="font-size:9.5pt; font-style:italic;">Note: the certifying Member should be a member other than the Managing Member where the Company has more than one member.</p>
+  </div>
+
+  <div class="notary">
+    <div class="seal">NOTARY SEAL / STAMP</div>
+    <div class="hdr">Notary Acknowledgment</div>
+    <p class="small">A notary public or other officer completing this certificate verifies only the identity of the individual who signed the document to which this certificate is attached, and not the truthfulness, accuracy, or validity of that document.</p>
+    <p>State of <span class="fill"></span> &nbsp;&nbsp; County of <span class="fill"></span></p>
+    <p>On <span class="fill sm"></span>, 20<span class="fill" style="min-width:0.4in"></span>, before me, <span class="fill md"></span>, Notary Public, personally appeared <span class="fill md"></span>, who proved to me on the basis of satisfactory evidence to be the person whose name is subscribed to the within instrument and acknowledged to me that he/she executed the same in his/her authorized capacity.</p>
+    <p style="margin-top:0.16in;">Signature <span class="fill lg"></span> &nbsp; <span class="nowrap">My commission expires <span class="fill sm"></span></span></p>
+  </div>
+
+  <p class="footnote">Certificate of Incumbency and Authority — OTL Rental LLC</p>
+</section>
+
+<!-- =============== PAGE: STATEMENT OF AUTHORITY =============== -->
+<section class="doc">
+  <h2 class="entity">OTL Rental LLC</h2>
+  <h1>Statement of Authority</h1>
+  <p class="subtitle">For filing with the Secretary of State and, where the Company holds real property, for recording with the county recorder</p>
+  <hr class="rule">
+
+  <div class="caution">
+    <p><strong>Read before filing.</strong> In states that have adopted the Revised Uniform Limited Liability Company Act, a statement of authority gives public notice of a person&rsquo;s authority only once it is <em>filed</em> with the Secretary of State; to affect real property, a certified copy must also be recorded in the county where the property sits. Filing fees, form numbers, and required wording differ by state — check the Secretary of State&rsquo;s office for the state of formation, and use its official form if it requires one. A statement filed here generally lapses after five years unless cancelled or renewed sooner.</p>
+  </div>
+
+  <p><strong>1. Name of limited liability company:</strong> &nbsp; OTL RENTAL LLC</p>
+  <p><strong>2. State of formation:</strong> <span class="fill"></span> &nbsp;&nbsp; <strong>Entity file number:</strong> <span class="fill md"></span></p>
+  <p><strong>3. Street address of principal office:</strong><br><span class="fill full"></span><br><span class="fill full"></span></p>
+  <p><strong>4. Position and authority.</strong> The Company states that each person holding the position of <strong>Managing Member</strong> — currently <strong>NICHILAD JAIME</strong> — has authority to:</p>
+  <ul class="powers">
+    <li>execute instruments transferring, leasing, mortgaging, or otherwise encumbering real property held in the name of the Company; and</li>
+    <li>enter into other transactions on behalf of the Company, and otherwise act for and bind the Company.</li>
+  </ul>
+  <p><strong>5. Limitations on that authority</strong> (if none, write &ldquo;NONE&rdquo;):<br><span class="fill full"></span><br><span class="fill full"></span></p>
+  <p><strong>6. Legal description of the real property affected</strong>, if this statement is to be recorded (attach an exhibit if needed):<br><span class="fill full"></span><br><span class="fill full"></span><br><span class="fill full"></span></p>
+
+  <p class="indent" style="margin-top:0.18in;">The undersigned declares under penalty of perjury that this statement is true and correct, and is signed on behalf of the Company by a person authorized to do so.</p>
+
+  <div class="sigblock">
+    <p>Dated: <span class="fill"></span>, 20<span class="fill" style="min-width:0.4in"></span></p>
+    <div class="sigrow">
+      <div class="sigcell">
+        <div class="sigline"></div>
+        <div class="sigcap">Signature on behalf of OTL Rental LLC</div>
+      </div>
+      <div class="sigcell">
+        <div class="sigline"></div>
+        <div class="sigcap">Print name and title</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="notary">
+    <div class="seal">NOTARY SEAL / STAMP</div>
+    <div class="hdr">Notary Acknowledgment</div>
+    <p>State of <span class="fill"></span> &nbsp;&nbsp; County of <span class="fill"></span></p>
+    <p>On <span class="fill sm"></span>, 20<span class="fill" style="min-width:0.4in"></span>, before me, <span class="fill md"></span>, Notary Public, personally appeared <span class="fill md"></span>, who proved to me on the basis of satisfactory evidence to be the person whose name is subscribed to the within instrument and acknowledged to me that he/she executed the same in his/her authorized capacity.</p>
+    <p style="margin-top:0.16in;">Signature <span class="fill lg"></span> &nbsp; <span class="nowrap">My commission expires <span class="fill sm"></span></span></p>
+  </div>
+
+  <p class="footnote">Statement of Authority — OTL Rental LLC — not effective as public notice until filed</p>
+</section>
+
+<!-- =============== PAGE: CERTIFICATION LETTER =============== -->
+<section class="doc">
+  <div class="letterhead">
+    <div class="name">OTL Rental LLC</div>
+    <div class="addr">
+      <span class="fill lg"></span><br>
+      <span class="fill lg"></span><br>
+      Phone <span class="fill sm"></span> &nbsp;&nbsp; Email <span class="fill md"></span>
+    </div>
+  </div>
+  <hr class="rule">
+
+  <p style="text-align:left; margin-bottom:0.25in;"><span class="fill"></span>, 20<span class="fill" style="min-width:0.4in"></span></p>
+
+  <p style="text-align:left;">To Whom It May Concern:</p>
+
+  <p style="text-align:left; font-weight:bold; margin: 0.18in 0;">Re: Authority of Managing Member — OTL Rental LLC</p>
+
+  <p class="indent">This letter confirms that <strong>NICHILAD JAIME</strong> is a Member of OTL Rental LLC, a limited liability company organized under the laws of the State of <span class="fill"></span>, entity file number <span class="fill md"></span>, and serves as its <strong>Managing Member</strong>.</p>
+
+  <p class="indent">In that capacity, and pursuant to the Company&rsquo;s Operating Agreement and the unanimous written consent of its Members dated <span class="fill sm"></span>, 20<span class="fill" style="min-width:0.4in"></span>, Nichilad Jaime is authorized to act alone on behalf of the Company — including executing contracts and leases, opening and operating bank accounts, obtaining financing, acquiring and disposing of Company property, and otherwise binding the Company in the ordinary course of its business.</p>
+
+  <p class="indent">That authority is in full force and effect as of the date of this letter and has not been revoked or limited. A certified copy of the members&rsquo; written consent, the Company&rsquo;s certificate of incumbency, and its formation documents are available on request.</p>
+
+  <p class="indent">Please direct any questions regarding this letter to the undersigned.</p>
+
+  <div class="sigblock" style="margin-top:0.35in;">
+    <p style="text-align:left;">Very truly yours,</p>
+    <p style="text-align:left; margin-top:0.05in;"><strong>OTL RENTAL LLC</strong></p>
+    <div class="sigrow" style="margin-top:0.3in;">
+      <div class="sigcell">
+        <div class="sigline"></div>
+        <div class="sigcap">Signature</div>
+      </div>
+      <div class="sigcell">
+        <div class="sigline"></div>
+        <div class="sigcap">Print name and title</div>
+      </div>
+    </div>
+  </div>
+
+</section>
+
+</body>
+</html>
